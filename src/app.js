@@ -1,3 +1,3 @@
-const css = require('./app.scss');
+const css = require('./assets/scss/app.scss');
 
 console.log('Hello');

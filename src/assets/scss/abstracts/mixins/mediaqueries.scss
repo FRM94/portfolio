@@ -1,0 +1,17 @@
+@mixin mq($width, $type: max) {
+	@if map_has_key($breakpoints, $width) {
+		$width: map_get($breakpoints, $width);
+		@if $type == max {
+			$width: $width - 1px;
+		}
+		@media only screen and (#{$type}-width: $width) {
+			@content;
+		}
+	}
+}
+
+@mixin mq-range($min-width, $max-width) {
+	@media only screen and (min-width: $min-width) and (max-width: $max-width) {
+		@content;
+	}
+}

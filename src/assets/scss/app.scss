@@ -1,9 +1,10 @@
 /* Vendors */
-@import "vendors/normalize";
-@import "vendors/fonts";
+@import 'vendors/normalize';
+@import 'vendors/fonts';
 
 /* Abstracts */
-@import "abstracts/variables";
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
 
 /* Layouts */
-@import "layouts/template";
+@import 'layouts/template';

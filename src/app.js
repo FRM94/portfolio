@@ -1,3 +1,2 @@
 const css = require('./assets/scss/app.scss');
-
-console.log('Hello');
+const data = require('./assets/js/data.js');

@@ -57,21 +57,28 @@ function loadContent() {
 				insertDescription();
 
 				// Dynamically add picture overlay (to all)
-				var overlay = document.createElement('div');
-				overlay.setAttribute('class', 'section__overlay');
-				target.appendChild(overlay);
-				target.insertBefore(overlay, target.childNodes[3]);
+				function insertOverlay() {
+					var overlay = document.createElement('div');
+					overlay.setAttribute('class', 'section__overlay');
+					target.appendChild(overlay);
+					target.insertBefore(overlay, target.childNodes[3]);
+				}
+				insertOverlay();
 
 				// Dynamically add category picture (to all)
-				var picture = document.createElement('img');
-				picture.setAttribute('class', 'section__background');
-				picture.src = 'dist/images/' + data[i].category + '-bg.jpg';
-				target.appendChild(picture);
-				target.insertBefore(picture, target.childNodes[4]);
+				function insertBackground() {
+					var picture = document.createElement('img');
+					picture.setAttribute('class', 'section__background');
+					picture.src = 'dist/images/' + data[i].category + '-bg.jpg';
+					target.appendChild(picture);
+					target.insertBefore(picture, target.childNodes[4]);
+				}
+				insertBackground();
+
 			}
 		}
 	};
-	dataRequest.open('GET', 'src/assets/data/categories.json');
+	dataRequest.open('GET', '/src/assets/data/categories.json');
 	dataRequest.send();
 }
 

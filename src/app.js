@@ -1,3 +1,4 @@
-const scss = require('./assets/scss/app.scss');
-const base = require('./assets/js/base.js');
-const data = require('./assets/js/data.js');
+const SCSS = require('./assets/scss/app.scss');
+const BASE = require('./assets/js/base.js');
+const DATA = require('./assets/js/data.js');
+const TRANSITIONS = require('./assets/js/transitions.js');

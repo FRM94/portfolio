@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path');
 
@@ -45,7 +46,7 @@ module.exports = {
 				})
 			},
 			{
-				test: /\.(jpe?g|png|gif|svg)$/i,
+				test: /\.(jpg|jpe?g|png|gif|svg)$/i,
 				use: [
 					{
 						loader: 'file-loader',
@@ -69,6 +70,9 @@ module.exports = {
 		}),
 		new ExtractTextPlugin({
 			filename: 'app.css',
-		})
+		}),
+		new CopyWebpackPlugin([
+			{ from: 'src/assets/images', to: 'images' }
+		])
 	]
 }

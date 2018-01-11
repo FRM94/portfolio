@@ -73,6 +73,7 @@ body {
 		text-transform: uppercase;
 		transform-origin: left bottom;
 		transform: rotate(-90deg);
+		transition: ease 0.3s;
 	}
 
 	&__tags, 

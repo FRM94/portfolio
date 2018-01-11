@@ -5,7 +5,7 @@ $section-minimised: 8vw;
 	&.no-direct {
 		.stacked,
 		.section:not(.active) {
-			transition-delay: 0.3s;
+			transition-delay: 0.5s;
 		}
 	}
 	.section.active {
@@ -15,6 +15,11 @@ $section-minimised: 8vw;
 			.section__overlay {
 				opacity: 0.75;
 			}
+		}
+
+		.section__title {
+			left: -3vw;
+			transition-delay: 0.125s;
 		}
 	}
 	.section:not(.active),
@@ -33,19 +38,19 @@ $section-minimised: 8vw;
 
 				&:first-of-type {
 					animation: section-height;
-					animation-duration: 0.3s;
+					animation-duration: 0.5s;
 					animation-iteration-count: 1;
 				}
 				&:last-of-type {
 					position: absolute;
 					
 					animation: section-height;
-					animation-duration: 0.3s;
+					animation-duration: 0.5s;
 					animation-iteration-count: 1;
 
 					animation: section-last;
 					animation-duration: 0.1s;
-					animation-delay: 0.3s;
+					animation-delay: 0.5s;
 					animation-iteration-count: 1;
 				}
 

@@ -1,10 +1,10 @@
 'use: strict';
 
 function toggleSections() {
-	var parent = document.querySelector('.container');
-	var items = document.querySelectorAll('.section');
+	let parent = document.querySelector('.container');
+	let items = document.querySelectorAll('.section');
 
-	for (var i = 0; i < items.length; i++) {
+	for (let i = 0; i < items.length; i++) {
 		items[i].addEventListener('click', function () {
 			// Item closed (no new item opened)
 			if (this.classList.contains('active')) {
@@ -15,7 +15,7 @@ function toggleSections() {
 					parent.classList.remove('no-direct');
 				}
 			} else {
-				for (var x = 0; x < items.length; x++) {
+				for (let x = 0; x < items.length; x++) {
 					// Switched to another item
 					if (items[x].classList.contains('active')) {
 						/* TODO - Toggle local data
@@ -38,7 +38,7 @@ function toggleSections() {
 					parent.classList.add('no-direct');
 				}
 				this.classList.add('active');
-				loadFullCategory();
+				//loadFullCategory();
 				/* TODO - Load server data
 
 					1. Hide current data

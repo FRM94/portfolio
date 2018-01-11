@@ -12,6 +12,7 @@ function toggleSections() {
 				parent.classList.remove('active');
 				if (this.parentElement.classList.contains('stacked')) {
 					this.parentElement.classList.remove('active');
+					parent.classList.remove('no-direct');
 				}
 			} else {
 				for (var x = 0; x < items.length; x++) {
@@ -26,6 +27,7 @@ function toggleSections() {
 						items[x].classList.remove('active');
 						if (items[x].parentElement.classList.contains('stacked')) {
 							items[x].parentElement.classList.remove('active');
+							parent.classList.remove('no-direct');
 						}
 					}
 				}
@@ -33,6 +35,7 @@ function toggleSections() {
 				parent.classList.add('active');
 				if (this.parentElement.classList.contains('stacked')) {
 					this.parentElement.classList.add('active');
+					parent.classList.add('no-direct');
 				}
 				this.classList.add('active');
 				loadFullCategory();

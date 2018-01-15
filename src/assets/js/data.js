@@ -4,8 +4,8 @@ import * as base from './base.js';
 
 function loadPage() {
 	loadPreview();
-	loadCategoryContent();
-	loadCategoryProjects();
+	loadMain();
+	loadProjects();
 }
 loadPage();
 
@@ -61,7 +61,7 @@ function loadPreview() {
 	dataRequest.send();
 }
 
-function loadCategoryContent() {
+function loadMain() {
 	var dataRequest = new XMLHttpRequest();
 	dataRequest.onreadystatechange = function () {
 
@@ -75,27 +75,27 @@ function loadCategoryContent() {
 				// Dynamically add a content container
 				function insertMainContainer() {
 					var main = document.createElement('div');
-					main.setAttribute('class', 'section__main');
+					main.setAttribute('class', 'section__content');
 					target.appendChild(main);
 					target.insertBefore(main, target.childNodes[1]);
 				}
 				insertMainContainer();
 
-				var target = category[i].querySelector('.section__main');
+				var target = category[i].querySelector('.section__content');
 
 				// Dynamically add a content container
 				function insertContentContainer() {
 					var container = document.createElement('div');
-					container.setAttribute('class', 'section__content');
+					container.setAttribute('class', 'section__main');
 					target.appendChild(container);
 					//target.insertBefore(container, target.childNodes[1]);
 				}
 				insertContentContainer();
 
-				var target = category[i].querySelector('.section__content');
+				var target = category[i].querySelector('.section__main');
 
 				// Dynamically add a category title
-				function insertTitle() {
+				function insertMainTitle() {
 					if (data[i].hasOwnProperty('name')) {
 						var title = document.createElement('h3');
 						title.textContent = data[i].name;
@@ -104,7 +104,7 @@ function loadCategoryContent() {
 						target.insertBefore(title, target.childNodes[0]);
 					}
 				}
-				insertTitle();
+				insertMainTitle();
 
 				// Dynamically add category tags
 				var tags = data[i].tags;
@@ -127,11 +127,13 @@ function loadCategoryContent() {
 				// Dynamically add a category description
 				function insertDescription() {
 					if (data[i].hasOwnProperty('description')) {
-						var description = document.createElement('p');
-						description.textContent = data[i].description;
-						description.setAttribute('class', 'content__text');
-						target.appendChild(description);
-						target.insertBefore(description, target.childNodes[2]);
+						var items = data[i].description.length;
+						for (var b = 0; b < items; b++) {
+							var description = document.createElement('p');
+							description.textContent = data[i].description[b];
+							description.setAttribute('class', 'content__description');
+							target.appendChild(description);
+						}
 					}
 				}
 				insertDescription();
@@ -145,7 +147,7 @@ function loadCategoryContent() {
 	dataRequest.send();
 }
 
-function loadCategoryProjects() {
+function loadProjects() {
 	var dataRequest = new XMLHttpRequest();
 	dataRequest.onreadystatechange = function () {
 
@@ -157,7 +159,7 @@ function loadCategoryProjects() {
 
 				if (data[i].hasOwnProperty('projects')) {
 
-					var target = category[i].querySelector('.section__main');
+					var target = category[i].querySelector('.section__content');
 
 					// Dynamically add a projects container
 					function insertProjectsContainer() {
@@ -169,6 +171,19 @@ function loadCategoryProjects() {
 					insertProjectsContainer();
 
 					var target = category[i].querySelector('.section__projects');
+
+					// Dynamically add a category title
+					function insertTitle() {
+						if (data[i].hasOwnProperty('name')) {
+							var title = document.createElement('h3');
+							title.textContent = data[i].name + ' Projects';
+							title.setAttribute('class', 'projects__title');
+							target.appendChild(title);
+							target.insertBefore(title, target.childNodes[0]);
+						}
+					}
+					insertTitle();
+
 					var projects = data[i].projects;
 
 					for (var x = 0; x < projects.length; x++) {

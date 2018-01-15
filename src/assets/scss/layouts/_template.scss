@@ -1,9 +1,15 @@
 body {
+	@include position(relative, 0, 0, 0, 0);
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 	font-family: 'Barlow Semi Condensed', 'Roboto Condensed', 'Roboto', Helvetica, sans-serif;
 	background-color: #333;
 }
 
 .bg {
+	@include position(absolute, 0, 0, 0, 0);
+	z-index: -1;
 	object-fit: cover;
 	filter: blur(50px);
 }
@@ -38,7 +44,7 @@ body {
 	overflow: hidden;
 	transition: ease 0.5s;
 
-	&:hover {
+	&:not(.active):hover {
 		cursor: pointer;
 
 		.section__overlay {
@@ -57,8 +63,7 @@ body {
 	}
 
 	&__title,
-	&__tags,
-	&__text {
+	&__content {
 		z-index: 2;
 	}
 
@@ -76,9 +81,10 @@ body {
 		transition: ease 0.3s;
 	}
 
-	&__tags, 
-	&__text {
+	&__content {
+		position: relative;
 		opacity: 0;
+		transition: ease 0.5s;
 	}
 
 	&__overlay, 

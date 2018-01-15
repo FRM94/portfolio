@@ -18,12 +18,6 @@ function toggleSections() {
 				for (let x = 0; x < items.length; x++) {
 					// Switched to another item
 					if (items[x].classList.contains('active')) {
-						/* TODO - Toggle local data
-
-							1. Hide current data
-							2. Run items animations
-							3. Show loaded data
-						*/
 						items[x].classList.remove('active');
 						if (items[x].parentElement.classList.contains('stacked')) {
 							items[x].parentElement.classList.remove('active');
@@ -38,16 +32,8 @@ function toggleSections() {
 					parent.classList.add('no-direct');
 				}
 				this.classList.add('active');
-				//loadFullCategory();
-				/* TODO - Load server data
-
-					1. Hide current data
-					2. Load item data
-					3. Create elements and assign data to it
-				*/
 			}
 		});
 	}
 }
-
 toggleSections();

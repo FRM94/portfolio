@@ -8,7 +8,23 @@
 			"Sketch",
 			"myBalsamiq"
 		],
-		"description": "As a designer, I endeavour to build bridges between users and systems."
+		"description": "As a designer, I endeavour to build bridges between users and systems.",
+		"projects": [
+			{
+				"title": "Project 1",
+				"description": [
+					"This was an awesome project!",
+					"Pretty cool"
+				]
+			},
+			{
+				"title": "Project 2",
+				"description": [
+					"This was a shitty project!",
+					"Pretty awful"
+				]
+			}
+		]
 	},
 	{
 		"category": "development",
@@ -19,7 +35,16 @@
 			"JavaScript",
 			"jQuery"
 		],
-		"description": "As a developer, I endeavour to build lightweight but powerful systems."
+		"description": "As a developer, I endeavour to build lightweight but powerful systems.",
+		"projects": [
+			{
+				"title": "Project 3",
+				"description": [
+					"This was an okay project...",
+					"Pretty average"
+				]
+			}
+		]
 	},
 	{
 		"category": "about",

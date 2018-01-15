@@ -2,9 +2,17 @@
 
 import * as base from './base.js';
 
+function loadPage() {
+	loadPreview();
+	loadCategoryContent();
+	loadCategoryProjects();
+}
+loadPage();
+
 function loadPreview() {
 	var dataRequest = new XMLHttpRequest();
 	dataRequest.onreadystatechange = function () {
+
 		if (this.readyState == 4 && this.status == 200) {
 			var data = JSON.parse(dataRequest.responseText);
 			var category = document.getElementsByClassName('section');
@@ -15,7 +23,7 @@ function loadPreview() {
 				target.setAttribute('class', 'section ' + data[i].category);
 
 				// Dynamically add category titles
-				function insertTitle() {
+				function insertCategoryTitle() {
 					if (data[i].hasOwnProperty('name')) {
 						var title = document.createElement('h2');
 						title.textContent = data[i].name;
@@ -24,143 +32,171 @@ function loadPreview() {
 						target.insertBefore(title, target.childNodes[0]);
 					}
 				}
-				insertTitle();
+				insertCategoryTitle();
 
-				// Dynamically add picture overlay (to all)
+				// Dynamically add a picture overlay (to all)
 				function insertOverlay() {
 					var overlay = document.createElement('div');
 					overlay.setAttribute('class', 'section__overlay');
 					target.appendChild(overlay);
-					target.insertBefore(overlay, target.childNodes[3]);
+					target.insertBefore(overlay, target.childNodes[1]);
 				}
 				insertOverlay();
 
-				// Dynamically add category picture (to all)
+				// Dynamically add a category picture (to all)
 				function insertBackground() {
 					var picture = document.createElement('img');
 					picture.setAttribute('class', 'section__background');
 					picture.src = 'dist/images/' + data[i].category + '-bg.jpg';
 					target.appendChild(picture);
-					target.insertBefore(picture, target.childNodes[4]);
+					target.insertBefore(picture, target.childNodes[2]);
 				}
 				insertBackground();
 
 			}
 		}
+
 	};
 	dataRequest.open('GET', '/src/assets/data/categories.json');
 	dataRequest.send();
 }
-loadPreview();
 
-function loadFullCategory() {
+function loadCategoryContent() {
 	var dataRequest = new XMLHttpRequest();
 	dataRequest.onreadystatechange = function () {
+
 		if (this.readyState == 4 && this.status == 200) {
 			var data = JSON.parse(dataRequest.responseText);
+			var category = document.getElementsByClassName('section');
 
-			//Dynamically add category tags
-			var tags = data[i].tags;
-			function createList() {
-				if (data[i].hasOwnProperty('tags')) {
-					var list = document.createElement('ul');
-					list.setAttribute('class', 'section__tags');
-					for (var x = 0; x < tags.length; x++) {
-						var item = document.createElement('li');
-						item.setAttribute('class', 'tag');
-						item.textContent = tags[x];
-						list.appendChild(item);
-					}
-					target.appendChild(list);
-					target.insertBefore(list, target.childNodes[1]);
+			for (var i = 0; i < category.length; i++) {
+				var target = category[i];
+
+				// Dynamically add a content container
+				function insertMainContainer() {
+					var main = document.createElement('div');
+					main.setAttribute('class', 'section__main');
+					target.appendChild(main);
+					target.insertBefore(main, target.childNodes[1]);
 				}
+				insertMainContainer();
+
+				var target = category[i].querySelector('.section__main');
+
+				// Dynamically add a content container
+				function insertContentContainer() {
+					var container = document.createElement('div');
+					container.setAttribute('class', 'section__content');
+					target.appendChild(container);
+					//target.insertBefore(container, target.childNodes[1]);
+				}
+				insertContentContainer();
+
+				var target = category[i].querySelector('.section__content');
+
+				// Dynamically add a category title
+				function insertTitle() {
+					if (data[i].hasOwnProperty('name')) {
+						var title = document.createElement('h3');
+						title.textContent = data[i].name;
+						title.setAttribute('class', 'content__title');
+						target.appendChild(title);
+						target.insertBefore(title, target.childNodes[0]);
+					}
+				}
+				insertTitle();
+
+				// Dynamically add category tags
+				var tags = data[i].tags;
+				function createList() {
+					if (data[i].hasOwnProperty('tags')) {
+						var list = document.createElement('ul');
+						list.setAttribute('class', 'content__tags');
+						for (var x = 0; x < tags.length; x++) {
+							var item = document.createElement('li');
+							item.setAttribute('class', 'tag');
+							item.textContent = tags[x];
+							list.appendChild(item);
+						}
+						target.appendChild(list);
+						target.insertBefore(list, target.childNodes[1]);
+					}
+				}
+				createList();
+
+				// Dynamically add a category description
+				function insertDescription() {
+					if (data[i].hasOwnProperty('description')) {
+						var description = document.createElement('p');
+						description.textContent = data[i].description;
+						description.setAttribute('class', 'content__text');
+						target.appendChild(description);
+						target.insertBefore(description, target.childNodes[2]);
+					}
+				}
+				insertDescription();
+
 			}
-			createList();
 
 		}
+
 	};
 	dataRequest.open('GET', '/src/assets/data/categories.json');
 	dataRequest.send();
 }
 
-// function loadContent() {
-// 	var dataRequest = new XMLHttpRequest();
-// 	dataRequest.onreadystatechange = function () {
-// 		if (this.readyState == 4 && this.status == 200) {
-// 			var data = JSON.parse(dataRequest.responseText);
-// 			var category = document.getElementsByClassName('section');
+function loadCategoryProjects() {
+	var dataRequest = new XMLHttpRequest();
+	dataRequest.onreadystatechange = function () {
 
-// 			for (var i = 0; i < category.length; i++) {
-// 				// Dynamically add category classes
-// 				var target = category[i];
-// 				target.setAttribute('class', 'section ' + data[i].category);
+		if (this.readyState == 4 && this.status == 200) {
+			var data = JSON.parse(dataRequest.responseText);
+			var category = document.getElementsByClassName('section');
 
-// 				// Dynamically add category titles
-// 				function insertTitle() {
-// 					if (data[i].hasOwnProperty('name')) {
-// 						var title = document.createElement('h2');
-// 						title.textContent = data[i].name;
-// 						title.setAttribute('class', 'section__title');
-// 						target.appendChild(title);
-// 						target.insertBefore(title, target.childNodes[0]);
-// 					}
-// 				}
-// 				insertTitle();
+			for (var i = 0; i < category.length; i++) {
 
-// 				// Dynamically add category tags
-// 				var tags = data[i].tags;
-// 				function createList() {
-// 					if (data[i].hasOwnProperty('tags')) {
-// 						var list = document.createElement('ul');
-// 						list.setAttribute('class', 'section__tags');
-// 						for (var x = 0; x < tags.length; x++) {
-// 							var item = document.createElement('li');
-// 							item.setAttribute('class', 'tag');
-// 							item.textContent = tags[x];
-// 							list.appendChild(item);
-// 						}
-// 						target.appendChild(list);
-// 						target.insertBefore(list, target.childNodes[1]);
-// 					}
-// 				}
-// 				createList();
+				if (data[i].hasOwnProperty('projects')) {
 
-// 				// Dynamically add category description
-// 				function insertDescription() {
-// 					if (data[i].hasOwnProperty('description')) {
-// 						var description = document.createElement('p');
-// 						description.textContent = data[i].description;
-// 						description.setAttribute('class', 'section__text');
-// 						target.appendChild(description);
-// 						target.insertBefore(description, target.childNodes[2]);
-// 					}
-// 				}
-// 				insertDescription();
+					var target = category[i].querySelector('.section__main');
 
-// 				// Dynamically add picture overlay (to all)
-// 				function insertOverlay() {
-// 					var overlay = document.createElement('div');
-// 					overlay.setAttribute('class', 'section__overlay');
-// 					target.appendChild(overlay);
-// 					target.insertBefore(overlay, target.childNodes[3]);
-// 				}
-// 				insertOverlay();
+					// Dynamically add a projects container
+					function insertProjectsContainer() {
+						var container = document.createElement('div');
+						container.setAttribute('class', 'section__projects');
+						target.appendChild(container);
+						target.insertBefore(container, target.childNodes[4]);
+					}
+					insertProjectsContainer();
 
-// 				// Dynamically add category picture (to all)
-// 				function insertBackground() {
-// 					var picture = document.createElement('img');
-// 					picture.setAttribute('class', 'section__background');
-// 					picture.src = 'dist/images/' + data[i].category + '-bg.jpg';
-// 					target.appendChild(picture);
-// 					target.insertBefore(picture, target.childNodes[4]);
-// 				}
-// 				insertBackground();
+					var target = category[i].querySelector('.section__projects');
+					var projects = data[i].projects;
 
-// 			}
-// 		}
-// 	};
-// 	dataRequest.open('GET', '/src/assets/data/categories.json');
-// 	dataRequest.send();
-// }
+					for (var x = 0; x < projects.length; x++) {
 
-//loadContent();
+						var container = document.createElement('div');
+						container.setAttribute('class', 'section__project');
+						target.appendChild(container);
+
+						var subTarget = container;
+
+						// Dynamically add a project title
+						function insertProjectTitle() {
+							var title = document.createElement('h3');
+							title.textContent = data[i].projects[x].title;
+							title.setAttribute('class', 'project__title');
+							subTarget.appendChild(title);
+						}
+						insertProjectTitle();
+
+					}
+
+				}
+
+			}
+
+		}
+
+	};
+	dataRequest.open('GET', '/src/assets/data/categories.json');
+	dataRequest.send();
+}

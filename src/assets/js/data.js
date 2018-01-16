@@ -47,7 +47,7 @@ function loadPreview() {
 				function insertBackground() {
 					var picture = document.createElement('img');
 					picture.setAttribute('class', 'section__background');
-					picture.src = 'dist/images/' + data[i].category + '-bg.jpg';
+					picture.src = '/images/' + data[i].category + '-bg.jpg';
 					target.appendChild(picture);
 					target.insertBefore(picture, target.childNodes[2]);
 				}
@@ -209,7 +209,7 @@ function loadProjects() {
 							var picture = document.createElement('img');
 							projectName = projectName.replace(/\s+/g, '-').toLowerCase();
 							picture.setAttribute('class', 'project__image');
-							picture.src = 'dist/images/projects/' + projectName + '/' + projectName + '--preview.jpg';
+							picture.src = '/images/projects/' + projectName + '/' + projectName + '--preview.jpg';
 							container.appendChild(picture);
 						}
 						insertProjectImage();

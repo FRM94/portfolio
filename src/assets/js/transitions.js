@@ -56,12 +56,8 @@ function toggleProject() {
 	let parent = document.querySelector('.section__content');
 	let items = document.querySelectorAll('.section__project');
 
-	console.log(items);
-
 	for (let i = 0; i < items.length; i++) {
 		items[i].addEventListener('click', function () {
-
-			console.log('hi');
 
 			// // Item closed (no new item opened)
 			// if (this.classList.contains('active')) {

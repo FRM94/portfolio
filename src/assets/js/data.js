@@ -161,7 +161,7 @@ function loadProjects() {
 
 			for (var i = 0; i < category.length; i++) {
 
-				if (data[i].hasOwnProperty('projects')) {
+				if (data[i].hasOwnProperty('projects') && data[i].projects.length >= 1) {
 
 					var target = category[i].querySelector('.section__content');
 
@@ -252,7 +252,7 @@ function loadProject() {
 
 			for (var i = 0; i < category.length; i++) {
 
-				if (data[i].hasOwnProperty('projects')) {
+				if (data[i].hasOwnProperty('projects') && data[i].projects.length >= 1) {
 
 					var target = category[i].querySelector('.project-highlight');
 

@@ -6,6 +6,7 @@ function loadPage() {
 	loadPreview();
 	loadMain();
 	loadProjects();
+	loadProject();
 }
 loadPage();
 
@@ -48,6 +49,9 @@ function loadPreview() {
 					var picture = document.createElement('img');
 					picture.setAttribute('class', 'section__background');
 					picture.src = '/images/' + data[i].category + '-bg.jpg';
+					picture.onerror = function () {
+						picture.src = '/images/placeholder.jpg';
+					}
 					target.appendChild(picture);
 					target.insertBefore(picture, target.childNodes[2]);
 				}
@@ -172,6 +176,14 @@ function loadProjects() {
 
 					var target = category[i].querySelector('.section__projects');
 
+					// Dynamically add a projects container
+					function insertProjectContainer() {
+						var container = document.createElement('div');
+						container.setAttribute('class', 'project-highlight');
+						target.appendChild(container);
+					}
+					insertProjectContainer();
+
 					// Dynamically add a category title
 					function insertTitle() {
 						if (data[i].hasOwnProperty('name')) {
@@ -179,7 +191,7 @@ function loadProjects() {
 							title.textContent = data[i].name + ' Projects';
 							title.setAttribute('class', 'projects__title');
 							target.appendChild(title);
-							target.insertBefore(title, target.childNodes[0]);
+							target.insertBefore(title, target.childNodes[1]);
 						}
 					}
 					insertTitle();
@@ -210,11 +222,48 @@ function loadProjects() {
 							projectName = projectName.replace(/\s+/g, '-').toLowerCase();
 							picture.setAttribute('class', 'project__image');
 							picture.src = '/images/projects/' + projectName + '/' + projectName + '--preview.jpg';
+							picture.onerror = function () {
+								picture.src = '/images/placeholder.jpg';
+							}
 							container.appendChild(picture);
 						}
 						insertProjectImage();
 
 					}
+
+				}
+
+			}
+
+		}
+
+	};
+	dataRequest.open('GET', '/src/assets/data/categories.json');
+	dataRequest.send();
+}
+
+function loadProject() {
+	var dataRequest = new XMLHttpRequest();
+	dataRequest.onreadystatechange = function () {
+
+		if (this.readyState == 4 && this.status == 200) {
+			var data = JSON.parse(dataRequest.responseText);
+			var category = document.getElementsByClassName('section');
+
+			for (var i = 0; i < category.length; i++) {
+
+				if (data[i].hasOwnProperty('projects')) {
+
+					var target = category[i].querySelector('.project-highlight');
+
+					// // Dynamically add a project title
+					// function insertProjectTitle() {
+					// 	var title = document.createElement('h3');
+					// 	title.textContent = projectName;
+					// 	title.setAttribute('class', 'project__title');
+					// 	subTarget.appendChild(title);
+					// }
+					// insertProjectTitle();
 
 				}
 

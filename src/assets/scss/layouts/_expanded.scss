@@ -1,6 +1,32 @@
+.container.active {
+	.stacked {
+		.section__content {
+			width: calc(#{$section-maximised} - #{$section-minimised});
+		}
+	}
+}
+
 .section.active {
 	.section__content {
 		overflow-y: scroll;
+
+		.section__project {
+			&:hover {
+				cursor: pointer;
+	
+				.project__image {
+					opacity: 0.7;
+				}
+			}
+		}
+
+		&.highlight {
+			overflow-y: hidden;
+
+			.project-highlight {
+				top: 0;
+			}
+		}
 	}
 }
 
@@ -10,6 +36,8 @@
 	padding: $section-padding;
 	box-sizing: border-box;
 	color: $white;
+	overflow-y: auto;
+	transition: 0.25s;
 
 	.content__title,
 	.content__tags {
@@ -17,10 +45,21 @@
 	}
 
 	.content__title {
+		@include position(relative, null, null, null, null);
 		margin-top: 0;
 		font-size: 8vh;
 		font-weight: 600;
 		text-transform: uppercase;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&:after {
+			content: '\2715';
+			@include position(absolute, 15%, 0, 0, null);
+			font-size: 42px;
+		}
 	}
 
 	.content__tags {
@@ -54,6 +93,16 @@
 		}
 	}
 
+	.project-highlight {
+		z-index: 9;
+		@include position(absolute, 0, 0, 0, 0);
+		width: 100%;
+		height: 100%;
+		top: -100vh;
+		background: white;
+		transition: 0.5s ease;
+	}
+
 	.section__project {
 		position: relative;
 		display: inline-block;
@@ -62,16 +111,16 @@
 		height: 360px;
 		padding: 30px;
 		box-sizing: border-box;
-		background-color: $black;
+		background-color: $white;
 		box-shadow: 2px 4px 30px 0 rgba(51, 51, 51, 0.3);
 
 		&:before {
 			content: '';
 			z-index: 1;
-			@include position(absolute, -5%, -10%, -10%, -10%);
+			@include position(absolute, -3%, -10%, -10%, -10%);
 			width: 120%;
-			height: 130%;
-			background: linear-gradient(170deg, #ffffff 35%, transparent 50%);
+			height: 132%;
+			background: linear-gradient(173deg, #ffffff 35%, transparent 50%);
 			filter: blur(10px);
 		}
 		
@@ -81,7 +130,7 @@
 
 		.project__title {
 			z-index: 2;
-			position: relative;
+			@include position(relative, null, null, null, null);
 			margin: 0;
 			padding: 10px 20px;
 			font-size: 36px;
@@ -90,9 +139,7 @@
 
 			&:before {
 				content: '';
-				position: absolute;
-				top: 0;
-				left: 0;
+				@include position(absolute, 0, null, null, 0);
 				width: 4px;
 				height: 100%;
 				background-color: $grey-dark;
@@ -100,13 +147,14 @@
 		}
 
 		.project__image {
-			@include position(absolute, 50px, 0, 0, 0);
+			@include position(absolute, null, 0, 0, 0);
 			width: 100%;
-			height: 100%;
+			min-height: 67%;
 			object-fit: cover;
 			object-position: bottom;
 			z-index: 0;
 			pointer-events: none;
+			transition: 0.25s;
 		}
 	}
 }

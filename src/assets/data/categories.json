@@ -14,14 +14,14 @@
 		],
 		"projects": [
 			{
-				"title": "Project 1",
+				"title": "Project Name",
 				"description": [
 					"This was an awesome project!",
 					"Pretty cool"
 				]
 			},
 			{
-				"title": "Project 2",
+				"title": "Project Name",
 				"description": [
 					"This was a shitty project!"
 				]

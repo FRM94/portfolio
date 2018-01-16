@@ -193,15 +193,26 @@ function loadProjects() {
 						target.appendChild(container);
 
 						var subTarget = container;
+						var projectName = data[i].projects[x].title;
 
 						// Dynamically add a project title
 						function insertProjectTitle() {
 							var title = document.createElement('h3');
-							title.textContent = data[i].projects[x].title;
+							title.textContent = projectName;
 							title.setAttribute('class', 'project__title');
 							subTarget.appendChild(title);
 						}
 						insertProjectTitle();
+
+						// Dynamically add a project picture (to all)
+						function insertProjectImage() {
+							var picture = document.createElement('img');
+							projectName = projectName.replace(/\s+/g, '-').toLowerCase();
+							picture.setAttribute('class', 'project__image');
+							picture.src = 'dist/images/projects/' + projectName + '/' + projectName + '--preview.jpg';
+							container.appendChild(picture);
+						}
+						insertProjectImage();
 
 					}
 

@@ -38,6 +38,10 @@
 	transition: 0.25s;	
 }
 
+.section__main {
+	position: relative;
+}
+
 .content__title,
 .content__tags {
 	margin-bottom: 50px;
@@ -49,14 +53,23 @@
 	font-size: 8vh;
 	font-weight: 600;
 	text-transform: uppercase;
+}
+
+.content__close {
+	@include position(absolute, 3%, 0, null, null);
+	width: 100%;
+	width: 32px;
+    height: 32px;
 
 	&:hover {
-		cursor: pointer;
+		&:after {
+			cursor: pointer;
+		}
 	}
-
+	
 	&:after {
 		content: '\2715';
-		@include position(absolute, 15%, 0, 0, null);
+		@include position(absolute, -10px, 0, null, null);
 		font-size: 42px;
 	}
 }

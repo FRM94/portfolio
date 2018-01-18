@@ -253,6 +253,15 @@ function loadProjectHighlight() {
 			}
 			insertProjectIntro();
 
+			// Dynamically add a category picture (to all)
+			function insertProjectBackground() {
+				var picture = document.createElement('img');
+				picture.setAttribute('class', 'highlight__background');
+				picture.src = '/images/highlight-bg.jpg';
+				target.appendChild(picture);
+			}
+			insertProjectBackground();
+
 		}
 	}
 }

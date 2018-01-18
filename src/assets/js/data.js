@@ -10,7 +10,7 @@ function loadPage() {
 	loadPreview();
 	loadMain();
 	loadProjects();
-	// loadProject();
+	loadProjectHighlight();
 }
 loadPage();
 
@@ -98,7 +98,7 @@ function loadMain() {
 		}
 		insertMainTitle();
 
-		// Dynamically add a content container
+		// Dynamically add a close icon
 		function insertCloseIcon() {
 			var close = document.createElement('span');
 			close.textContent = ' ';
@@ -159,15 +159,17 @@ function loadProjects() {
 			}
 			insertProjectsContainer();
 
-			var target = category[i].querySelector('.section__projects');
+			var target = category[i].querySelector('.section__content');
 
 			// Dynamically add a projects container
 			function insertProjectContainer() {
 				var container = document.createElement('div');
-				container.setAttribute('class', 'project-highlight');
+				container.setAttribute('class', 'project__highlight');
 				target.appendChild(container);
 			}
 			insertProjectContainer();
+
+			var target = category[i].querySelector('.section__projects');
 
 			// Dynamically add a category title
 			function insertTitle() {
@@ -219,22 +221,37 @@ function loadProjects() {
 	}
 }
 
-function loadProject() {
-
+function loadProjectHighlight() {
 	for (var i = 0; i < category.length; i++) {
-
 		if (data[i].hasOwnProperty('projects') && data[i].projects.length >= 1) {
 
-			var target = category[i].querySelector('.project-highlight');
+			var projects = data[i].projects;
+			var target = category[i].querySelector('.project__highlight');
 
-			// // Dynamically add a project title
-			// function insertProjectTitle() {
-			// 	var title = document.createElement('h3');
-			// 	title.textContent = projectName;
-			// 	title.setAttribute('class', 'project__title');
-			// 	subTarget.appendChild(title);
-			// }
-			// insertProjectTitle();
+			// Dynamically add a project title
+			function insertProjectTitle() {
+				var title = document.createElement('h3');
+				title.setAttribute('class', 'highlight__title');
+				target.appendChild(title);
+			}
+			insertProjectTitle();
+
+			// Dynamically add a close icon
+			function insertCloseIcon() {
+				var close = document.createElement('span');
+				close.textContent = ' ';
+				close.setAttribute('class', 'highlight__close');
+				target.appendChild(close);
+			}
+			insertCloseIcon();
+
+			// Dynamically add a project intro
+			function insertProjectIntro() {
+				var intro = document.createElement('p');
+				intro.setAttribute('class', 'highlight__intro');
+				target.appendChild(intro);
+			}
+			insertProjectIntro();
 
 		}
 	}

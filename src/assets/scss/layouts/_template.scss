@@ -106,15 +106,14 @@ body {
 	}
 	
 	&.design {
-		z-index: 2;
+		z-index: 3;
 
 		.section__overlay {
 			background: linear-gradient($red, $purple);
 		}
 	}
 	&.development {
-		z-index: 1;
-		box-shadow: -5px 0 80px $black;
+		z-index: 2;
     	
 		.section__overlay {
 			background: linear-gradient($blue-light, $blue);

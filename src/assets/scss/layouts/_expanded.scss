@@ -19,6 +19,9 @@
 }
 
 .section.active {
+	z-index: 5;
+	box-shadow: -5px 0 80px rgba(0,0,0,0.75);
+	
 	.section__content {
 		overflow-y: scroll;
 		

@@ -55,7 +55,15 @@ function toggleSections() {
 				sections[i].parentElement.classList.remove('active');
 				parent.classList.remove('no-direct');
 			}
-
+			for (let x = 0; x < sections.length; x++) {
+				let projectContainer = sections[x].querySelector('.section__projects');
+				if (sections[x].contains(projectContainer)) {
+					let highlight = sections[x].querySelector('.project__highlight');
+					let content = sections[x].querySelector('.section__content');
+					highlight.classList.remove('active');
+					content.classList.remove('highlight');
+				}
+			}
 			let content = sections[i].querySelector('.section__content');
 			setTimeout(function () {
 				scrollToTop(content);

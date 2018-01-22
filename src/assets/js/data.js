@@ -208,6 +208,7 @@ function loadProjects() {
 					var picture = document.createElement('img');
 					projectName = projectName.replace(/\s+/g, '-').toLowerCase();
 					picture.setAttribute('class', 'project__image');
+
 					picture.src = '/images/projects/' + projectName + '/' + projectName + '--preview.jpg';
 					picture.onerror = function () {
 						picture.src = '/images/placeholder.jpg';
@@ -230,7 +231,7 @@ function loadProjectHighlight() {
 
 			// Dynamically add a project title
 			function insertProjectTitle() {
-				var title = document.createElement('h3');
+				var title = document.createElement('h2');
 				title.setAttribute('class', 'highlight__title');
 				target.appendChild(title);
 			}

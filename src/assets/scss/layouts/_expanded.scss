@@ -1,4 +1,7 @@
 .container:not(.active) {
+	.section__project {
+		pointer-events: none;
+	}
 	.development {
 		box-shadow: -5px 0 80px rgba(0,0,0,0.75);
 	}
@@ -32,7 +35,7 @@
 				top: 0;
 			}
 		}
-
+		
 		.section__project {
 			&:hover {
 				cursor: pointer;

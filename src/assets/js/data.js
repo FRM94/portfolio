@@ -1,10 +1,10 @@
-'use: strict';
+'use strict';
 
 import * as base from './base.js';
-import { CATEGORIES } from '../data/categories';
+import * as transition from './transitions.js';
+import { CATEGORIES as data } from '../data/categories';
 
-var data = CATEGORIES;
-var category = document.getElementsByClassName('section');
+let category = document.getElementsByClassName('section');
 
 function loadPage() {
 	loadPreview();
@@ -15,37 +15,30 @@ function loadPage() {
 loadPage();
 
 function loadPreview() {
-	var category = document.getElementsByClassName('section');
-
-	for (var i = 0; i < category.length; i++) {
+	for (let i = 0; i < category.length; i++) {
 		// Dynamically add category classes
-		var target = category[i];
-		target.setAttribute('class', 'section ' + data[i].category);
-
+		let target = category[i];
+		target.className = 'section ' + data[i].category;
 		// Dynamically add category titles
-		function insertCategoryTitle() {
+		{
 			if (data[i].hasOwnProperty('name')) {
-				var title = document.createElement('h2');
+				let title = document.createElement('h2');
 				title.textContent = data[i].name;
 				title.setAttribute('class', 'section__title');
 				target.appendChild(title);
 				target.insertBefore(title, target.childNodes[0]);
 			}
 		}
-		insertCategoryTitle();
-
 		// Dynamically add a picture overlay (to all)
-		function insertOverlay() {
-			var overlay = document.createElement('div');
+		{
+			let overlay = document.createElement('div');
 			overlay.setAttribute('class', 'section__overlay');
 			target.appendChild(overlay);
 			target.insertBefore(overlay, target.childNodes[1]);
 		}
-		insertOverlay();
-
 		// Dynamically add a category picture (to all)
-		function insertBackground() {
-			var picture = document.createElement('img');
+		{
+			let picture = document.createElement('img');
 			picture.setAttribute('class', 'section__background');
 			picture.src = '/images/' + data[i].category + '-bg.jpg';
 			picture.onerror = function () {
@@ -54,68 +47,63 @@ function loadPreview() {
 			target.appendChild(picture);
 			target.insertBefore(picture, target.childNodes[2]);
 		}
-		insertBackground();
-
 	}
 }
 
 function loadMain() {
-
-	for (var i = 0; i < category.length; i++) {
-		var target = category[i];
+	for (let i = 0; i < category.length; i++) {
+		let target = category[i];
 
 		// Dynamically add a content container
-		function insertMainContainer() {
-			var main = document.createElement('div');
+		{
+			let main = document.createElement('div');
 			main.setAttribute('class', 'section__content');
 			target.appendChild(main);
 			target.insertBefore(main, target.childNodes[1]);
 		}
-		insertMainContainer();
-
-		var target = category[i].querySelector('.section__content');
-
 		// Dynamically add a content container
-		function insertContentContainer() {
-			var container = document.createElement('div');
+		{
+			let container = document.createElement('div');
 			container.setAttribute('class', 'section__main');
-			target.appendChild(container);
+			target.querySelector('.section__content').appendChild(container);
 			//target.insertBefore(container, target.childNodes[1]);
 		}
-		insertContentContainer();
 
-		var target = category[i].querySelector('.section__main');
+		target = target.querySelector('.section__main');
 
 		// Dynamically add a category title
-		function insertMainTitle() {
+		{
 			if (data[i].hasOwnProperty('name')) {
-				var title = document.createElement('h3');
+				let title = document.createElement('h3');
 				title.textContent = data[i].name;
-				title.setAttribute('class', 'content__title');
+				title.className = 'content__title';
 				target.appendChild(title);
 				target.insertBefore(title, target.childNodes[0]);
 			}
 		}
-		insertMainTitle();
-
 		// Dynamically add a close icon
-		function insertCloseIcon() {
-			var close = document.createElement('span');
+		{
+			let close = document.createElement('span');
 			close.textContent = ' ';
 			close.setAttribute('class', 'content__close');
+			close.addEventListener('click', function (event) {
+				event.stopPropagation();
+				category[i].classList.remove('active');
+				category[i].parentElement.classList.remove('active');
+				category[i].parentElement.parentElement.classList.remove('active');
+				category[i].parentElement.parentElement.classList.remove('no-direct');
+			})
 			target.appendChild(close);
 			target.insertBefore(close, target.childNodes[1]);
 		}
-		insertCloseIcon();
-
 		// Dynamically add category tags
-		var tags = data[i].tags;
-		function createList() {
-			if (data[i].hasOwnProperty('tags')) {
-				var list = document.createElement('ul');
+		let tags = data[i].tags;
+		{
+			if (tags) {
+				let list = document.createElement('ul');
 				list.setAttribute('class', 'content__tags');
-				for (var x = 0; x < tags.length; x++) {
-					var item = document.createElement('li');
+				for (let x = 0; x < tags.length; x++) {
+					let item = document.createElement('li');
 					item.setAttribute('class', 'tag');
 					item.textContent = tags[x];
 					list.appendChild(item);
@@ -124,88 +112,74 @@ function loadMain() {
 				target.insertBefore(list, target.childNodes[2]);
 			}
 		}
-		createList();
-
 		// Dynamically add a category description
-		function insertDescription() {
-			if (data[i].hasOwnProperty('description')) {
-				var items = data[i].description.length;
-				for (var b = 0; b < items; b++) {
-					var description = document.createElement('p');
+		{
+			if (data[i].description) {
+				let items = data[i].description.length;
+				for (let b = 0; b < items; b++) {
+					let description = document.createElement('p');
 					description.textContent = data[i].description[b];
 					description.setAttribute('class', 'content__description');
 					target.appendChild(description);
 				}
 			}
 		}
-		insertDescription();
-
 	}
 }
 
 function loadProjects() {
-	for (var i = 0; i < category.length; i++) {
+	for (let i = 0; i < category.length; i++) {
+		if (data[i].projects && data[i].projects.length >= 1) {
 
-		if (data[i].hasOwnProperty('projects') && data[i].projects.length >= 1) {
-
-			var target = category[i].querySelector('.section__content');
+			let target = category[i].querySelector('.section__content');
 
 			// Dynamically add a projects container
-			function insertProjectsContainer() {
-				var container = document.createElement('div');
+			{
+				let container = document.createElement('div');
 				container.setAttribute('class', 'section__projects');
 				target.appendChild(container);
 				target.insertBefore(container, target.childNodes[4]);
 			}
-			insertProjectsContainer();
 
-			var target = category[i].querySelector('.section__content');
+			target = category[i].querySelector('.section__content');
 
 			// Dynamically add a projects container
-			function insertProjectContainer() {
-				var container = document.createElement('div');
+			{
+				let container = document.createElement('div');
 				container.setAttribute('class', 'project__highlight');
 				target.appendChild(container);
 			}
-			insertProjectContainer();
 
-			var target = category[i].querySelector('.section__projects');
+			target = category[i].querySelector('.section__projects');
 
 			// Dynamically add a category title
-			function insertTitle() {
-				if (data[i].hasOwnProperty('name')) {
-					var title = document.createElement('h3');
-					title.textContent = data[i].name + ' Projects';
-					title.setAttribute('class', 'projects__title');
-					target.appendChild(title);
-					target.insertBefore(title, target.childNodes[1]);
-				}
+			if (data[i].hasOwnProperty('name')) {
+				let title = document.createElement('h3');
+				title.textContent = data[i].name + ' Projects';
+				title.setAttribute('class', 'projects__title');
+				target.appendChild(title);
+				target.insertBefore(title, target.childNodes[1]);
 			}
-			insertTitle();
 
-			var projects = data[i].projects;
+			let projects = data[i].projects;
+			for (let x = 0; x < projects.length; x++) {
 
-			for (var x = 0; x < projects.length; x++) {
-
-				var container = document.createElement('div');
+				let container = document.createElement('div');
 				container.setAttribute('class', 'section__project');
 				target.appendChild(container);
-
-				var subTarget = container;
-				var projectName = data[i].projects[x].title;
+				let subTarget = container;
+				let projectName = data[i].projects[x].title;
 
 				// Dynamically add a project title
-				function insertProjectTitle() {
-					var title = document.createElement('h3');
+				{
+					let title = document.createElement('h3');
 					title.textContent = projectName;
 					title.setAttribute('class', 'project__title');
 					subTarget.appendChild(title);
 				}
-				insertProjectTitle();
-
 				// Dynamically add a project picture (to all)
-				function insertProjectImage() {
-					var picture = document.createElement('img');
+				{
+					let picture = document.createElement('img');
 					projectName = projectName.replace(/\s+/g, '-').toLowerCase();
 					picture.setAttribute('class', 'project__image');
 
@@ -215,54 +189,53 @@ function loadProjects() {
 					}
 					container.appendChild(picture);
 				}
-				insertProjectImage();
-
+				// Set an event listener on every project
+				container.addEventListener('click', function (eventInformation) {
+					transition.openProject(container, data[i].projects[x]);
+				}.bind(data[i].projects));
 			}
 		}
 	}
 }
 
 function loadProjectHighlight() {
-	for (var i = 0; i < category.length; i++) {
-		if (data[i].hasOwnProperty('projects') && data[i].projects.length >= 1) {
+	for (let i = 0; i < category.length; i++) {
+		if (!(data[i].hasOwnProperty('projects') && data[i].projects.length >= 1)) {
+			continue;
+		}
 
-			var projects = data[i].projects;
-			var target = category[i].querySelector('.project__highlight');
+		let projects = data[i].projects;
+		let target = category[i].querySelector('.project__highlight');
 
-			// Dynamically add a project title
-			function insertProjectTitle() {
-				var title = document.createElement('h2');
-				title.setAttribute('class', 'highlight__title');
-				target.appendChild(title);
-			}
-			insertProjectTitle();
-
-			// Dynamically add a close icon
-			function insertCloseIcon() {
-				var close = document.createElement('span');
-				close.textContent = ' ';
-				close.setAttribute('class', 'highlight__close');
-				target.appendChild(close);
-			}
-			insertCloseIcon();
-
-			// Dynamically add a project intro
-			function insertProjectIntro() {
-				var intro = document.createElement('p');
-				intro.setAttribute('class', 'highlight__intro');
-				target.appendChild(intro);
-			}
-			insertProjectIntro();
-
-			// Dynamically add a category picture (to all)
-			function insertProjectBackground() {
-				var picture = document.createElement('img');
-				picture.setAttribute('class', 'highlight__background');
-				picture.src = '/images/highlight-bg.jpg';
-				target.appendChild(picture);
-			}
-			insertProjectBackground();
-
+		// Dynamically add a project title
+		{
+			let title = document.createElement('h2');
+			title.setAttribute('class', 'highlight__title');
+			target.appendChild(title);
+		}
+		// Dynamically add a close icon
+		{
+			let close = document.createElement('span');
+			close.textContent = ' ';
+			close.setAttribute('class', 'highlight__close');
+			close.addEventListener('click', function () {
+				target.classList.remove('active');
+				target.parentElement.classList.remove('highlight');
+			})
+			target.appendChild(close);
+		}
+		// Dynamically add a project intro
+		{
+			let intro = document.createElement('p');
+			intro.setAttribute('class', 'highlight__intro');
+			target.appendChild(intro);
+		}
+		// Dynamically add a category picture (to all)
+		{
+			let picture = document.createElement('img');
+			picture.setAttribute('class', 'highlight__background');
+			picture.src = '/images/highlight-bg.jpg';
+			target.appendChild(picture);
 		}
 	}
 }

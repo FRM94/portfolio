@@ -4,7 +4,7 @@ const create = require('dom-create-element');
 
 import * as base from './base.js';
 import * as transition from './transitions.js';
-import { CATEGORIES as data } from '../data/categories';
+import { DATA as data } from '../data/data';
 
 let category = document.getElementsByClassName('section');
 
@@ -230,7 +230,7 @@ function loadProjects() {
 					let picture = create({
 						selector: 'img',
 						styles: 'project__image',
-						src: '/images/projects/' + projectName + '/' + projectName + '--preview.jpg'
+						src: '/images/projects/' + projectName + '/' + 'preview.jpg'
 					});
 					container.appendChild(picture);
 				}

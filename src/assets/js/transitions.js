@@ -2,9 +2,7 @@
 
 const create = require('dom-create-element');
 
-import { CATEGORIES } from '../data/categories';
-
-let data = CATEGORIES;
+import { DATA as data } from '../data/data';
 
 export function openProject(project, information) {
 	// Set the project target element
@@ -25,34 +23,7 @@ function scrollToTop(el) {
 	el.scrollTop = 0;
 }
 
-// Sub project container
-function insertProjectSub(target, information) {
-	let sub = target.querySelector('.highlight__sub');
-	while (sub) {
-		sub.parentElement.removeChild(sub);
-		sub = target.querySelector('.highlight__sub');
-	}
-	for (let i = 0; i < information.description.length; i++) {
-
-		let subContainer = create({
-			selector: 'div',
-			styles: 'highlight__sub'
-		});
-		target.insertBefore(subContainer, target.childNodes[target.childNodes.length - 1]);
-		target.appendChild(subContainer);
-		insertSubTitle(subContainer, information.description[i])
-	}
-}
-
-function insertSubTitle(target, descriptionText) {
-	let description = create({
-		selector: 'p',
-		styles: 'highlight__description',
-		html: descriptionText
-	});
-	target.appendChild(description);
-}
-
+// Highlight default information
 function setProjectTitle(project, information) {
 	let title = information.title;
 	project.querySelector('.highlight__title').innerHTML = title;
@@ -62,6 +33,74 @@ function setProjectIntro(project, information) {
 	let intro = information.intro;
 	project.querySelector('.highlight__intro').innerHTML = intro;
 }
+
+// Sub project container
+function insertProjectSub(target, information) {
+	let sub = target.querySelector('.highlight__sub');
+	while (sub) {
+		sub.parentElement.removeChild(sub);
+		sub = target.querySelector('.highlight__sub');
+	}
+	for (let i = 0; i < information.sub.length; i++) {
+		let subContainer = create({
+			selector: 'div',
+			styles: 'highlight__sub'
+		});
+		target.insertBefore(subContainer, target.childNodes[target.childNodes.length - 1]);
+		target.appendChild(subContainer);
+		let textWrapper = create({
+			selector: 'div',
+			styles: 'highlight__text-wrapper'
+		});
+		insertSubTitle(textWrapper, information.sub[i].subtitle);
+		for (let x = 0; x < information.sub[i].descriptions.length; x++) {
+			insertSubDescription(textWrapper, information.sub[i].descriptions[x]);
+		}
+		subContainer.appendChild(textWrapper);
+		let imageWrapper = create({
+			selector: 'div',
+			styles: 'highlight__image-wrapper'
+		});
+		let projectName = information.title.replace(/\s+/g, '-').toLowerCase();
+		let projectSub = information.sub[i].subtitle.replace(/\s+/g, '-').toLowerCase();
+		let imageSrc = '/images/projects/' + projectName + '/' + projectSub + '.jpg';
+		insertSubImage(imageWrapper, imageSrc);
+		subContainer.appendChild(imageWrapper);
+	}
+}
+
+function insertSubTitle(target, titleText) {
+	let subtitle = create({
+		selector: 'h3',
+		styles: 'highlight__sub-title',
+		html: titleText
+	});
+	target.appendChild(subtitle);
+}
+
+function insertSubDescription(target, descriptionText) {
+	let description = create({
+		selector: 'p',
+		styles: 'highlight__description',
+		html: descriptionText
+	});
+	target.appendChild(description);
+}
+
+function insertSubImage(target, imageSrc) {
+
+	let image = create({
+		selector: 'img',
+		styles: 'highlight__image',
+		src: imageSrc
+	});
+	target.appendChild(image);
+}
+
+/* 
+	Set relevant classes according to the section that is 
+	opened, closed or switched
+*/
 
 let parent = document.querySelector('.container');
 let sections = document.querySelectorAll('.section');
@@ -97,13 +136,13 @@ for (let i = 0; i < sections.length; i++) {
 	});
 }
 
-// Loop through all the sections
+/*
+	Close the highlights section when the close icon is clicked
+	or the section was switched
+*/
 for (let i = 0; i < sections.length; i++) {
-	// Set the main wrapper
 	let content = sections[i].querySelector('.section__content');
-	// Set the project container wrapper
 	let projectContainer = sections[i].querySelector('.section__projects');
-	// Close the highlight once the close icon is closed and remove the dynamic elements
 	if (sections[i].contains(projectContainer)) {
 		let exit = sections[i].querySelector('.highlight__close');
 		exit.addEventListener('click', (e) => {

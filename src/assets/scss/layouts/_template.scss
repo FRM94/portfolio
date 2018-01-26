@@ -1,5 +1,5 @@
 body {
-	@include position(relative, 0, 0, 0, 0);
+	@include position(fixed, 0, 0, 0, 0);
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;

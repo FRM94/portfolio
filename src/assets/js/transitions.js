@@ -1,5 +1,7 @@
 'use strict';
 
+const create = require('dom-create-element');
+
 import { CATEGORIES } from '../data/categories';
 
 let data = CATEGORIES;
@@ -18,10 +20,12 @@ export function openProject(project, information) {
 	root.classList.add('active');
 }
 
+// Reset the scroll position within an element
 function scrollToTop(el) {
 	el.scrollTop = 0;
 }
 
+// Sub project container
 function insertProjectSub(target, information) {
 	let sub = target.querySelector('.highlight__sub');
 	while (sub) {
@@ -29,8 +33,11 @@ function insertProjectSub(target, information) {
 		sub = target.querySelector('.highlight__sub');
 	}
 	for (let i = 0; i < information.description.length; i++) {
-		let subContainer = document.createElement('div');
-		subContainer.setAttribute('class', 'highlight__sub');
+
+		let subContainer = create({
+			selector: 'div',
+			styles: 'highlight__sub'
+		});
 		target.insertBefore(subContainer, target.childNodes[target.childNodes.length - 1]);
 		target.appendChild(subContainer);
 		insertSubTitle(subContainer, information.description[i])
@@ -38,9 +45,11 @@ function insertProjectSub(target, information) {
 }
 
 function insertSubTitle(target, descriptionText) {
-	let description = document.createElement('p');
-	description.textContent = descriptionText;
-	description.setAttribute('class', 'highlight__description');
+	let description = create({
+		selector: 'p',
+		styles: 'highlight__description',
+		html: descriptionText
+	});
 	target.appendChild(description);
 }
 

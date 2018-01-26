@@ -1,5 +1,7 @@
 'use strict';
 
+const create = require('dom-create-element');
+
 import * as base from './base.js';
 import * as transition from './transitions.js';
 import { CATEGORIES as data } from '../data/categories';
@@ -15,77 +17,94 @@ function loadPage() {
 loadPage();
 
 function loadPreview() {
+
+	// For each section:
 	for (let i = 0; i < category.length; i++) {
-		// Dynamically add category classes
+
+		// Add category classes
 		let target = category[i];
 		target.className = 'section ' + data[i].category;
-		// Dynamically add category titles
+
+		// Add category titles
 		{
 			if (data[i].hasOwnProperty('name')) {
-				let title = document.createElement('h2');
-				title.textContent = data[i].name;
-				title.setAttribute('class', 'section__title');
+				let title = create({
+					selector: 'h2',
+					styles: 'section__title',
+					html: data[i].name
+				});
 				target.appendChild(title);
-				target.insertBefore(title, target.childNodes[0]);
 			}
 		}
-		// Dynamically add a picture overlay (to all)
+
+		// Add a content container
 		{
-			let overlay = document.createElement('div');
-			overlay.setAttribute('class', 'section__overlay');
+			let main = create({
+				selector: 'div',
+				styles: 'section__content'
+			});
+			target.appendChild(main);
+		}
+
+		// Add a picture overlay (to all)
+		{
+			let overlay = create({
+				selector: 'div',
+				styles: 'section__overlay'
+			});
 			target.appendChild(overlay);
-			target.insertBefore(overlay, target.childNodes[1]);
 		}
-		// Dynamically add a category picture (to all)
+
+		// Add a category picture (to all)
 		{
-			let picture = document.createElement('img');
-			picture.setAttribute('class', 'section__background');
-			picture.src = '/images/' + data[i].category + '-bg.jpg';
-			picture.onerror = function () {
-				picture.src = '/images/placeholder.jpg';
-			}
+			let picture = create({
+				selector: 'img',
+				styles: 'section__background',
+				src: '/images/' + data[i].category + '-bg.jpg'
+			});
 			target.appendChild(picture);
-			target.insertBefore(picture, target.childNodes[2]);
 		}
 	}
 }
 
 function loadMain() {
+	// For each section: 
 	for (let i = 0; i < category.length; i++) {
-		let target = category[i];
 
-		// Dynamically add a content container
+		// Set target element
+		let target = category[i].querySelector('.section__content');
+
+		// Dynamically add a main content container
 		{
-			let main = document.createElement('div');
-			main.setAttribute('class', 'section__content');
-			target.appendChild(main);
-			target.insertBefore(main, target.childNodes[1]);
-		}
-		// Dynamically add a content container
-		{
-			let container = document.createElement('div');
-			container.setAttribute('class', 'section__main');
-			target.querySelector('.section__content').appendChild(container);
-			//target.insertBefore(container, target.childNodes[1]);
+			let container = create({
+				selector: 'div',
+				styles: 'section__main'
+			});
+			target.appendChild(container);
 		}
 
+		// Set new target
 		target = target.querySelector('.section__main');
 
-		// Dynamically add a category title
+		// Add a category title
 		{
 			if (data[i].hasOwnProperty('name')) {
-				let title = document.createElement('h3');
-				title.textContent = data[i].name;
-				title.className = 'content__title';
+				let title = create({
+					selector: 'h3',
+					styles: 'content__title',
+					html: data[i].name
+				});
 				target.appendChild(title);
-				target.insertBefore(title, target.childNodes[0]);
 			}
 		}
-		// Dynamically add a close icon
+
+		// Add a close icon
 		{
-			let close = document.createElement('span');
-			close.textContent = ' ';
-			close.setAttribute('class', 'content__close');
+			let close = create({
+				selector: 'span',
+				styles: 'content__close',
+				html: ' '
+			});
 			close.addEventListener('click', function (event) {
 				event.stopPropagation();
 				category[i].classList.remove('active');
@@ -94,32 +113,38 @@ function loadMain() {
 				category[i].parentElement.parentElement.classList.remove('no-direct');
 			})
 			target.appendChild(close);
-			target.insertBefore(close, target.childNodes[1]);
 		}
-		// Dynamically add category tags
+
+		// Add category tags
 		let tags = data[i].tags;
 		{
 			if (tags) {
-				let list = document.createElement('ul');
-				list.setAttribute('class', 'content__tags');
+				let list = create({
+					selector: 'ul',
+					styles: 'content__tags'
+				});
 				for (let x = 0; x < tags.length; x++) {
-					let item = document.createElement('li');
-					item.setAttribute('class', 'tag');
-					item.textContent = tags[x];
+					let item = create({
+						selector: 'li',
+						styles: 'tag',
+						html: tags[x]
+					});
 					list.appendChild(item);
 				}
 				target.appendChild(list);
-				target.insertBefore(list, target.childNodes[2]);
 			}
 		}
-		// Dynamically add a category description
+
+		// Add a category description
 		{
 			if (data[i].description) {
 				let items = data[i].description.length;
 				for (let b = 0; b < items; b++) {
-					let description = document.createElement('p');
-					description.textContent = data[i].description[b];
-					description.setAttribute('class', 'content__description');
+					let description = create({
+						selector: 'p',
+						styles: 'content__description',
+						html: data[i].description[b]
+					});
 					target.appendChild(description);
 				}
 			}
@@ -128,68 +153,89 @@ function loadMain() {
 }
 
 function loadProjects() {
+
+	// For each section:
 	for (let i = 0; i < category.length; i++) {
+
+		// If the section contains projects
 		if (data[i].projects && data[i].projects.length >= 1) {
 
+			// Set initial target element
 			let target = category[i].querySelector('.section__content');
 
-			// Dynamically add a projects container
+			// Add a section for all projects
 			{
-				let container = document.createElement('div');
-				container.setAttribute('class', 'section__projects');
+				let container = create({
+					selector: 'div',
+					styles: 'section__projects'
+				});
 				target.appendChild(container);
-				target.insertBefore(container, target.childNodes[4]);
 			}
 
+			// Set new target element
 			target = category[i].querySelector('.section__content');
 
-			// Dynamically add a projects container
+			// Add a projects container
 			{
-				let container = document.createElement('div');
-				container.setAttribute('class', 'project__highlight');
+				let container = create({
+					selector: 'div',
+					styles: 'project__highlight'
+				});
 				target.appendChild(container);
 			}
 
+			// Set new target element
 			target = category[i].querySelector('.section__projects');
 
 			// Dynamically add a category title
 			if (data[i].hasOwnProperty('name')) {
-				let title = document.createElement('h3');
-				title.textContent = data[i].name + ' Projects';
-				title.setAttribute('class', 'projects__title');
+				let title = create({
+					selector: 'h3',
+					styles: 'projects__title',
+					html: data[i].name + ' projects'
+				});
 				target.appendChild(title);
-				target.insertBefore(title, target.childNodes[1]);
 			}
 
+			// Select all projects
 			let projects = data[i].projects;
+
+			// For each project:
 			for (let x = 0; x < projects.length; x++) {
 
-				let container = document.createElement('div');
-				container.setAttribute('class', 'section__project');
+				// Add a project container
+				let container = create({
+					selector: 'div',
+					styles: 'section__project',
+					html: data[i].name + ' projects'
+				});
 				target.appendChild(container);
+
 				let subTarget = container;
 				let projectName = data[i].projects[x].title;
 
-				// Dynamically add a project title
+				// Add a project title
 				{
-					let title = document.createElement('h3');
-					title.textContent = projectName;
-					title.setAttribute('class', 'project__title');
+					let title = create({
+						selector: 'h3',
+						styles: 'project__title',
+						html: projectName
+					});
 					subTarget.appendChild(title);
 				}
-				// Dynamically add a project picture (to all)
-				{
-					let picture = document.createElement('img');
-					projectName = projectName.replace(/\s+/g, '-').toLowerCase();
-					picture.setAttribute('class', 'project__image');
 
-					picture.src = '/images/projects/' + projectName + '/' + projectName + '--preview.jpg';
-					picture.onerror = function () {
-						picture.src = '/images/placeholder.jpg';
-					}
+				// Add a project picture (to all)
+				{
+					projectName = projectName.replace(/\s+/g, '-').toLowerCase();
+					let picture = create({
+						selector: 'img',
+						styles: 'project__image',
+						src: '/images/projects/' + projectName + '/' + projectName + '--preview.jpg'
+					});
 					container.appendChild(picture);
 				}
-				// Set an event listener on every project
+
+				// Set an event listener
 				container.addEventListener('click', function (eventInformation) {
 					transition.openProject(container, data[i].projects[x]);
 				}.bind(data[i].projects));
@@ -199,42 +245,57 @@ function loadProjects() {
 }
 
 function loadProjectHighlight() {
+	// For each section: 
 	for (let i = 0; i < category.length; i++) {
+
+		// If the section data has more than one project
 		if (!(data[i].hasOwnProperty('projects') && data[i].projects.length >= 1)) {
 			continue;
 		}
 
+		// Set the target elements
 		let projects = data[i].projects;
 		let target = category[i].querySelector('.project__highlight');
 
 		// Dynamically add a project title
 		{
-			let title = document.createElement('h2');
-			title.setAttribute('class', 'highlight__title');
+			let title = create({
+				selector: 'h2',
+				styles: 'highlight__title'
+			});
 			target.appendChild(title);
 		}
+
 		// Dynamically add a close icon
 		{
-			let close = document.createElement('span');
-			close.textContent = ' ';
-			close.setAttribute('class', 'highlight__close');
+			let close = create({
+				selector: 'span',
+				styles: 'highlight__close',
+				html: ' '
+			});
 			close.addEventListener('click', function () {
 				target.classList.remove('active');
 				target.parentElement.classList.remove('highlight');
 			})
 			target.appendChild(close);
 		}
+
 		// Dynamically add a project intro
 		{
-			let intro = document.createElement('p');
-			intro.setAttribute('class', 'highlight__intro');
+			let intro = create({
+				selector: 'p',
+				styles: 'highlight__intro'
+			});
 			target.appendChild(intro);
 		}
+
 		// Dynamically add a category picture (to all)
 		{
-			let picture = document.createElement('img');
-			picture.setAttribute('class', 'highlight__background');
-			picture.src = '/images/highlight-bg.jpg';
+			let picture = create({
+				selector: 'img',
+				styles: 'highlight__background',
+				src: '/images/highlight-bg.jpg'
+			});
 			target.appendChild(picture);
 		}
 	}

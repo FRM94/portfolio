@@ -208,13 +208,19 @@
 .highlight__title {
 	font-size: 60px;
 	z-index: auto;
+	padding-left: 2.5vw;
+    padding-right: 10vw;
+
+	&:before {
+		width: 6px;
+	}
 }
 
 .highlight__sub {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: flex-start;
-	margin-top: $section-margin-top;
+	margin-top: 8vh;
 
 	&:nth-child(even) {
 		flex-direction: row-reverse;
@@ -228,7 +234,7 @@
 
 .highlight__text-wrapper {
 	flex: 1;
-	padding-right: 50px;
+	padding: 20px 50px 0 0;
 }
 
 .highlight__image-wrapper {
@@ -244,8 +250,7 @@
 .highlight__sub-title {
 	margin-top: 0;
 	color: $grey-dark;
-	font-size: 36px;
-	font-weight: 400;
+	font-size: 42px;
 	text-transform: uppercase;
 }
 
@@ -254,6 +259,10 @@
 	color: $grey-dark;
 	font-size: 21px;
 	font-weight: 300;
+}
+
+.highlight__intro {
+	margin-top: 8vh;
 }
 
 .highlight__background {

@@ -19,6 +19,12 @@ body {
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
+
+	&.active {
+		.section__title {
+			left: 4vw;
+		}
+	}
 }
 
 .stacked {

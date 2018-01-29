@@ -1,13 +1,23 @@
 .container.active {
+
+	@include mq('phone-wide', max) {
+		width: calc(100vw + (#{$section-minimised} * 2));
+	};
+
 	&.no-direct {
 		.stacked,
 		.section:not(.active) {
 			transition-delay: 0.5s;
 		}
 	}
+
 	.section.active {
 		width: $section-maximised;
 		pointer-events: none;
+
+		@include mq('phone-wide', max) {
+			width: 100vw;
+		};
 
 		& > * {
 			pointer-events: all;
@@ -25,9 +35,11 @@
 
 		.section__title {
 			left: -3vw;
+			opacity: 0;
 			transition-delay: 0.125s;
 		}
 	}
+
 	.section:not(.active),
 	.stacked {
 		width: $section-minimised;
@@ -87,5 +99,13 @@
 	}
 	70% {
 		position: absolute;
+	}
+}
+@keyframes width-sped-up {
+	0% {
+		width: 84vw;
+	}
+	1% {
+		width: 100vw;
 	}
 }

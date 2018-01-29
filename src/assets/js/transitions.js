@@ -6,7 +6,7 @@ import { DATA as data } from '../data/data';
 
 export function openProject(project, information) {
 	// Set the project target element
-	const root = project.parentElement.parentElement.querySelector('.project__highlight');
+	const root = project.parentElement.parentElement.parentElement.querySelector('.project__highlight');
 	// Set the project title
 	setProjectTitle(root, information);
 	// Set the project introduction text

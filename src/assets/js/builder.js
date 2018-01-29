@@ -197,8 +197,15 @@ function loadProjects() {
 				target.appendChild(title);
 			}
 
+			let subprojects = create({
+				selector: 'div',
+				styles: 'projects__wrapper',
+			});
+			target.appendChild(subprojects);
+
 			// Select all projects
 			let projects = data[i].projects;
+			target = category[i].querySelector('.projects__wrapper');
 
 			// For each project:
 			for (let x = 0; x < projects.length; x++) {

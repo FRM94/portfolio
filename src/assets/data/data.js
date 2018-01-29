@@ -60,7 +60,7 @@ export const DATA = [
 	},
 	{
 		"category": "development",
-		"name": "Front-end Coding",
+		"name": "Front-end Dev",
 		"tags": [
 			"HTML5",
 			"(S)CSS",

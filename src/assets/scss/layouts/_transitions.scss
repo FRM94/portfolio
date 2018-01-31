@@ -1,6 +1,6 @@
 .container.active {
 
-	@include mq('phone-wide', max) {
+	@include mq('tablet-wide', max) {
 		width: calc(100vw + (#{$section-minimised} * 2));
 	};
 
@@ -15,7 +15,7 @@
 		width: $section-maximised;
 		pointer-events: none;
 
-		@include mq('phone-wide', max) {
+		@include mq('tablet-wide', max) {
 			width: 100vw;
 		};
 

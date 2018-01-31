@@ -88,12 +88,14 @@ function insertSubDescription(target, descriptionText) {
 }
 
 function insertSubImage(target, imageSrc) {
-
 	let image = create({
 		selector: 'img',
 		styles: 'highlight__image',
 		src: imageSrc
 	});
+	image.onerror = function () {
+		image.src = '/images/placeholder.jpg';
+	}
 	target.appendChild(image);
 }
 

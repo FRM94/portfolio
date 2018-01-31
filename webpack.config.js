@@ -34,7 +34,7 @@ module.exports = {
 							options: {
 								plugins: () => {
 									return [
-										require('autoprefixer')()
+										require('autoprefixer')
 									];
 								},
 								publicPath: '/dist'

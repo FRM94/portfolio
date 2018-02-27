@@ -1,6 +1,6 @@
 'use strict';
 
-const create = require('dom-create-element');
+const CREATE = require('dom-create-element');
 
 import * as base from './base.js';
 import * as transition from './transitions.js';

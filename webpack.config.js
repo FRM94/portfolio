@@ -1,16 +1,14 @@
-const webpack = require('webpack');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const autoprefixer = require('autoprefixer');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-const path = require('path');
+const WEBPACK             = require('webpack');
+const HTML_WEBPACK_PLUGIN = require('html-webpack-plugin');
+const EXTRACT_TEXT_PLUGIN = require('extract-text-webpack-plugin');
+const AUTOPREFIXER        = require('autoprefixer');
+const COPY_WEBPACK_PLUGIN = require('copy-webpack-plugin');
+const PATH                = require('path');
 
 module.exports = {
 	entry: './src/app.js',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: PATH.resolve( __dirname, 'dist' ),
 		filename: 'app.bundle.js'
 	},
 	devServer: {
@@ -21,7 +19,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
+				use: EXTRACT_TEXT_PLUGIN.extract( {
 					use: [
 						{
 							loader: 'css-loader',
@@ -34,7 +32,7 @@ module.exports = {
 							options: {
 								plugins: () => {
 									return [
-										require('autoprefixer')
+										require( 'autoprefixer' )
 									];
 								},
 								publicPath: '/dist'
@@ -67,26 +65,26 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['es2015']
+						presets: [ 'es2015' ]
 					}
 				}
 			}
 		]
 	},
 	plugins: [
-		new HtmlWebpackPlugin({
+		new HTML_WEBPACK_PLUGIN( {
 			title: 'Portfolio',
 			minify: {
 				collapseWhitespace: true
 			},
 			hash: true,
-			template: './index.html'
+			template: './src/index.ejs'
 		}),
-		new ExtractTextPlugin({
+		new EXTRACT_TEXT_PLUGIN( {
 			filename: 'app.css',
 		}),
-		new CopyWebpackPlugin([
-			{ from: 'src/assets/images', to: 'images' }
+		new COPY_WEBPACK_PLUGIN( [
+			{ from: './src/assets/images', to: 'images' }
 		])
 	]
 }

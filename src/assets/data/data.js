@@ -9,49 +9,89 @@ export const DATA = [
 			"myBalsamiq"
 		],
 		"description": [
-			"Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe.",
-			"Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+			"As a designer, I endeavour to build a bridge from the user to the system - and vice versa.",
+			"I achieve this is by listening carefully to every stakeholder, in order to create a product that fulfils everyone's needs. When designing an interface, I focus on the user's perspective, whilst preserving the goals of the client, to translate every input into a user friendly product. Naturally, everything is done using the latest design programs."
 		],
 		"projects": [
 			{
-				"title": "Project Name",
-				"intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+				"title": "BeCon Summit",
+				"intro": "I was asked to create a demo concept of an invitation to a medical meeting.",
 				"sub": [
 					{
-						"subtitle": "Wireframing",
+						"subtitle": "Demo",
 						"descriptions": [
-							"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-							"Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+							"The client asked for several different design options, so each of our team members got to create a concept on their own.",
+							"I focused on a clean page design with vertical navigation bar. It covers a selection of interesting topics and information about the programme about the event.",
+							"My submission was chosen as the best and then got to be developed and published."
+						]
+					}
+				]
+			},
+			{
+				"title": "Gamification",
+				"intro": "The MBO Rijnland, a school organisation South-Holland wanted to create system based on gamification, in order to attract students to learning.",
+				"sub": [
+					{
+						"subtitle": "About the project",
+						"descriptions": [
+							"A selection of students got to work on this system that had to improve the interaction between students, their teachers and their school. The challenge was to kick off with a dashboard that showed the progress of the student, giving them insight in how they are performing."
+						]
+					}
+				]
+			},
+			{
+				"title": "Encyclopedia",
+				"intro": "As a personal project, I wanted to come up with a design concept for one of the most challenging data collections: encyclopedias. I have not yet finished it.",
+				"sub": [
+					{
+						"subtitle": "Data refined",
+						"descriptions": [
+							"I personally love and dislike Wikipedia, for the ton of content and the way it's presented. Upon opening an article, a ton of data is thrown at you when you open a page: I have to find my way through unevenly aligned paragraphs.",
+							"My main focus was to create a layout that allows the user to read without interruptions and simultaneously check out accessory visuals."
 						]
 					},
 					{
-						"subtitle": "Prototyping",
+						"subtitle": "Interaction is key",
 						"descriptions": [
-							"Prototyping is about..."
+							"The page is filled with little tooltips and interactions that help the user in performing all sorts of tasks."
 						]
 					}
 				]
 			},
 			{
-				"title": "Project Name",
-				"intro": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+				"title": "Encyclopedia",
+				"intro": "As a personal project, I wanted to come up with a design concept for one of the most challenging data collections: encyclopedias. I have not yet finished it.",
 				"sub": [
 					{
-						"subtitle": "Something",
+						"subtitle": "Data refined",
 						"descriptions": [
-							"Something is about..."
+							"I personally love and dislike Wikipedia, for the ton of content and the way it's presented. Upon opening an article, a ton of data is thrown at you when you open a page: I have to find my way through unevenly aligned paragraphs.",
+							"My main focus was to create a layout that allows the user to read without interruptions and simultaneously check out accessory visuals."
+						]
+					},
+					{
+						"subtitle": "Interaction is key",
+						"descriptions": [
+							"The page is filled with little tooltips and interactions that help the user in performing all sorts of tasks."
 						]
 					}
 				]
 			},
 			{
-				"title": "Project 999",
-				"intro": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+				"title": "Encyclopedia",
+				"intro": "As a personal project, I wanted to come up with a design concept for one of the most challenging data collections: encyclopedias. I have not yet finished it.",
 				"sub": [
 					{
-						"subtitle": "Awesome",
+						"subtitle": "Data refined",
 						"descriptions": [
-							"Awesome is about..."
+							"I personally love and dislike Wikipedia, for the ton of content and the way it's presented. Upon opening an article, a ton of data is thrown at you when you open a page: I have to find my way through unevenly aligned paragraphs.",
+							"My main focus was to create a layout that allows the user to read without interruptions and simultaneously check out accessory visuals."
+						]
+					},
+					{
+						"subtitle": "Interaction is key",
+						"descriptions": [
+							"The page is filled with little tooltips and interactions that help the user in performing all sorts of tasks."
 						]
 					}
 				]
@@ -62,13 +102,17 @@ export const DATA = [
 		"category": "development",
 		"name": "Front-end Dev",
 		"tags": [
-			"HTML5",
+			"HTML(5)",
 			"(S)CSS",
-			"JavaScript",
-			"jQuery"
+			"JavaScript (ES5/6)",
+			"jQuery",
+			"Git",
+			"JSON",
+			"Gulp",
+			"Webpack"
 		],
 		"description": [
-			"As a developer, I endeavour to build lightweight but powerful systems."
+			"Besides designing, I am also very familiar to the art of developing. I am able to convert amazing design concepts to pixel-perfect and powerful systems, because I focus on accessibility and usage of the latest code conventions."
 		],
 		"projects": [
 			{

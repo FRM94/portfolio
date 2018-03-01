@@ -137,7 +137,8 @@ p {
 		@include mq('tablet-wide', max) {
 			padding: 60px 40px;
 		}
-		@include mq-range(1024px, max) {
+		@include mq-range(1024px, 2560px) {
+			padding: 0;
 			padding-right: 16vw !important;
 			width: 100vw !important;
 		}

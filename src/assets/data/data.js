@@ -57,44 +57,6 @@ export const DATA = [
 						]
 					}
 				]
-			},
-			{
-				"title": "Encyclopedia",
-				"intro": "As a personal project, I wanted to come up with a design concept for one of the most challenging data collections: encyclopedias. I have not yet finished it.",
-				"sub": [
-					{
-						"subtitle": "Data refined",
-						"descriptions": [
-							"I personally love and dislike Wikipedia, for the ton of content and the way it's presented. Upon opening an article, a ton of data is thrown at you when you open a page: I have to find my way through unevenly aligned paragraphs.",
-							"My main focus was to create a layout that allows the user to read without interruptions and simultaneously check out accessory visuals."
-						]
-					},
-					{
-						"subtitle": "Interaction is key",
-						"descriptions": [
-							"The page is filled with little tooltips and interactions that help the user in performing all sorts of tasks."
-						]
-					}
-				]
-			},
-			{
-				"title": "Encyclopedia",
-				"intro": "As a personal project, I wanted to come up with a design concept for one of the most challenging data collections: encyclopedias. I have not yet finished it.",
-				"sub": [
-					{
-						"subtitle": "Data refined",
-						"descriptions": [
-							"I personally love and dislike Wikipedia, for the ton of content and the way it's presented. Upon opening an article, a ton of data is thrown at you when you open a page: I have to find my way through unevenly aligned paragraphs.",
-							"My main focus was to create a layout that allows the user to read without interruptions and simultaneously check out accessory visuals."
-						]
-					},
-					{
-						"subtitle": "Interaction is key",
-						"descriptions": [
-							"The page is filled with little tooltips and interactions that help the user in performing all sorts of tasks."
-						]
-					}
-				]
 			}
 		]
 	},
@@ -116,13 +78,29 @@ export const DATA = [
 		],
 		"projects": [
 			{
-				"title": "Project 3",
-				"intro": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+				"title": "FTS Foundation",
+				"intro": "The design for the Fair Trade Software Foundation had been redesigned and had to be developed according to the new look and feel.",
 				"sub": [
 					{
-						"subtitle": "Lorem ipsum",
+						"subtitle": "New look",
 						"descriptions": [
-							"Lorem ipsum is about..."
+							"As part of a Scrum development team, I was mainly responsible for the navigation of the website. I co-operated closely with my teammates and together, we've achieved a good end product.",
+							"During the project, we've used HTML(5), CSS, SCSS, JavaScript (ES5/6+), GruntJS, Uglify, ESLint. Furthermore, we used Github as our version control system."
+						]
+					}
+				]
+			},
+			{
+				"title": "FTSF Webshop",
+				"intro": "The Fair Trade Software Foundation had the idea to, as a part of their new vision, sell their own Fair Trade merchandise through a webshop.",
+				"sub": [
+					{
+						"subtitle": "A webshop for FTSF",
+						"descriptions": [
+							"First of all, together with the design team, I was responsible to do research about user friendly webshops and user flows, as well as creating several concepts.",
+							"After our first concept got approved, we worked on a corporate identity and eventually designed the whole webshop for both desktop and mobile devices.",
+							"Afterwards, I continued to work on the webshop as a Front-end Developer and Scrum Master of a development team.",
+							"I took the opportunity to create a template foundation for the whole webshop, by using JavaScript (ES5/6+), SCSS en Blade.",
 						]
 					}
 				]

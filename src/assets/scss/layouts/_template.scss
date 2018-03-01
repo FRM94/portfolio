@@ -42,14 +42,14 @@ p {
 
 		&__title {
 			@include position(null, null, null, 0.7vh, 4vw);
-			font-size: 3vw;
+			font-size: 5vh;
 
 			@include mq-range(1024px, 1289px) {
 				@include position(absolute, null, null, 2vh, 5.5vw);
 				font-size: 5.25vh;
 			}
 			@include mq-range(768px, 1023px) {
-				@include position(absolute, null, null, 2.5vh, 6.5vw);
+				@include position(absolute, null, null, 2.5vh, 7.5vw);
 				font-size: 5vh;
 			}
 			@include mq-range(480px, 767px) {

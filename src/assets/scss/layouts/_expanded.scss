@@ -32,7 +32,7 @@
 					padding-right: 80px;
 				}
 				@include mq-range(480px, 1247px) {
-					padding: 60px 60px 40px 60px;
+					padding: 80px 80px 40px 80px;
 				}
 				@include mq('phablet', max) {
 					padding: 30px;
@@ -40,7 +40,7 @@
 			}
 			.projects__wrapper {
 				@include mq-range(480px, 1247px) {
-					padding: 0 60px 60px 60px;
+					padding: 0 80px 80px 80px;
 				}
 				@include mq('phablet', max) {
 					width: 100%;
@@ -83,7 +83,7 @@
 					font-size: 60px;
 				}
 			}
-			@include mq-range(1247px, 1599px) {
+			@include mq-range(1248px, 1599px) {
 				width: 54px;
 				height: 54px;
 
@@ -92,7 +92,7 @@
 				}
 			}
 			@include mq-range(1024px, 1247px) {
-				@include position(null, 82px, 60px, null, null);
+				@include position(null, 100px, 80px, null, null);
 				width: 48px;
 				height: 48px;
 
@@ -112,7 +112,7 @@
 		.highlight__close {
 			@include mq-range(1920px, 2560px) {
 				top: 148px;
-				right: 240px;
+				right: 30px;
 				width: 60px;
 				height: 60px;
 			}
@@ -126,7 +126,7 @@
 					font-size: 52px !important;
 				}
 			}
-			@include mq-range(1247px, 1599px) {
+			@include mq-range(1248px, 1599px) {
 				right: 80px;
 			}
 		}
@@ -276,7 +276,7 @@
 	}
 
 	@include mq-range(1024px, 1247px) {
-		@include position(null, 84px, 60px, null, null);
+		@include position(null, 84px, 80px, null, null);
 		width: 4.5vw;
 		height: 4.5vw;
 	}
@@ -375,7 +375,7 @@
 		font-size: 54px;
 	}
 	@include mq-range(480px, 1247px) {
-		padding: 0 60px;
+		padding: 0 80px;
 	}
 	@include mq('phablet', max) {
 		padding: 0 30px;

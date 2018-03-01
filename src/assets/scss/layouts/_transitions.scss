@@ -10,6 +10,10 @@
 			transition-delay: 0.5s;
 		}
 	}
+	
+	.stacked .section__title {
+		left: 4vw;
+	}
 
 	.section.active {
 		width: $section-maximised;

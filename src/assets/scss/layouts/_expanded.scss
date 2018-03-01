@@ -12,8 +12,34 @@
 
 .container.active {
 	&:not(.no-direct) {
+		.section__main {
+			@include mq-range(1920px, 2560px) {
+				padding: 0 10%;
+			}
+		}
 		.development {
 			box-shadow: -5px 0 80px rgba(0,0,0,0.25);
+		}
+		@include mq-range(1024px, 2560px) {
+			.section__content {
+				width: 100vw !important;
+			}
+		}
+		@include mq-range(1248px, 1599px) {
+			.section__main {
+				margin: 0 80px;
+			}
+			.projects__title {
+				margin-left: 80px;
+			}
+			.section__project {
+				&:first-of-type {
+					margin-left: 80px;
+				}
+				&:last-of-type {
+					margin-right: 80px;
+				}
+			}
 		}
 		.section.active {
 			.section__content {
@@ -22,14 +48,8 @@
 				}
 			}
 			.section__main {
-				@include mq-range(1920px, 2560px) {
-					padding: 0 10%;
-				}
 				@include mq-range(1600px, 1919px) {
 					margin: 80px 10%;
-				}
-				@include mq-range(1248px, 1599px) {
-					padding-right: 80px;
 				}
 				@include mq-range(480px, 1247px) {
 					padding: 80px 80px 40px 80px;
@@ -63,8 +83,10 @@
 				}
 			}
 			&:nth-of-type(2) {
-				.project__highlight {
-					left: $section-minimised;
+				@include mq-range(1024px, 2560px) {
+					.project__highlight {
+						left: $section-minimised;
+					}
 				}
 			}
 		}
@@ -109,11 +131,6 @@
 				@include position(null, 78px, 60px, null, null);
 			}
 		}
-		.content__close {
-			@include mq-range(1248px, 1599px) {
-				margin-right: 80px;
-			}
-		}
 		.highlight__close {
 			@include mq-range(1920px, 2560px) {
 				top: 148px;
@@ -141,7 +158,9 @@
 		left: 4vw;
 	}
 	.stacked .section__content {
-		width: calc(#{$section-maximised} - #{$section-minimised});
+		@include mq-range(1024px, 2560px) {
+			width: calc(#{$section-maximised} - #{$section-minimised});
+		}
 
 		@include mq-range(480px, 1023px) {
 			padding: 60px;

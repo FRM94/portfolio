@@ -111,11 +111,16 @@ export const DATA = [
 		"category": "about",
 		"name": "About Me",
 		"description": [
-			"I'm Fabian, a 23 year old designer and developer from The Netherlands."
+			"I'm Fabian, a 23 year old designer and developer from The Netherlands. My passion for both fields comes from my interest in user friendly applications and websites.",
+			"Not only by listening to clients, but also by tracking down their requirements and translating these into solutions. I (even as a hobby) really enjoy working on websites focused on accessibility. Naturally, all of these are developed with the latest standards and technologies. I'm a relaxed but enthusiastic person who is passionate about his work and always eager to learn.",
+			"In my spare time, I like photography, reading, sports, gaming and motorsport."
 		]
 	},
 	{
 		"category": "photography",
-		"name": "Photography"
+		"name": "Photography",
+		"description": [
+			"Coming soon!"
+		]
 	}
 ];

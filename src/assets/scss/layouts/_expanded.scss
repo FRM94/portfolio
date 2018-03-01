@@ -22,6 +22,15 @@
 				}
 			}
 			.section__main {
+				@include mq-range(1920px, 2560px) {
+					padding: 0 10%;
+				}
+				@include mq-range(1600px, 1919px) {
+					margin: 80px 10%;
+				}
+				@include mq-range(1248px, 1599px) {
+					padding-right: 80px;
+				}
 				@include mq-range(480px, 1247px) {
 					padding: 60px 60px 40px 60px;
 				}
@@ -59,13 +68,14 @@
 			@include mq-range(1920px, 2560px) {
 				width: 72px;
 				height: 72px;
+				margin-right: 10%;
 
 				&:after {
 					font-size: 72px;
 				}
 			}
 			@include mq-range(1600px, 1919px) {
-				@include position(null, null, 60px, null, null);
+				@include position(null, null, null, null, null);
 				width: 60px;
 				height: 60px;
 
@@ -94,6 +104,11 @@
 				@include position(null, 78px, 60px, null, null);
 			}
 		}
+		.content__close {
+			@include mq-range(1248px, 1599px) {
+				margin-right: 80px;
+			}
+		}
 		.highlight__close {
 			@include mq-range(1920px, 2560px) {
 				top: 148px;
@@ -106,7 +121,7 @@
 				right: 150px;
 				width: 52px;
 				height: 52px;
-		
+
 				&:after {
 					font-size: 52px !important;
 				}
@@ -138,7 +153,7 @@
 			margin-left: -#{$section-minimised};
 		}
 	}
-	
+
 	.section__content {
 		overflow-y: scroll;
 
@@ -154,11 +169,11 @@
 				top: 0;
 			}
 		}
-		
+
 		.section__project {
 			&:hover {
 				cursor: pointer;
-	
+
 				.project__image {
 					opacity: 0.7;
 				}
@@ -170,7 +185,7 @@
 .stacked .section.active {
 	@include mq('tablet-wide', max) {
 		width: 100vw !important;
-		
+
 		&:nth-of-type(1) {
 			margin-left: calc(-#{$section-minimised} * 2);
 		}
@@ -241,14 +256,15 @@
 	@include position(absolute, 25px, 0, null, null);
 	width: 100%;
 	width: 3.5vw;
-    height: 3.5vw;
+	height: 3.5vw;
+	transition: 0.25s;
 
 	&:hover {
 		&:after {
 			cursor: pointer;
 		}
 	}
-	
+
 	&:after {
 		content: '\2715';
 		@include position(absolute, -10px, 0, null, null);
@@ -333,7 +349,7 @@
 
 .section__projects {
 	margin-top: $section-margin-top;
-	
+
 	@include mq('desktop', max) {
 		margin-top: 0;
 		padding-bottom: 20px;
@@ -345,8 +361,14 @@
 	font-size: 42px;
 	font-weight: 500;
 	text-transform: uppercase;
-	
-	@include mq-range(2200px, 2560) {
+
+	@include mq-range(1920px, 2560px) {
+		margin-left: 10%;
+	}
+	@include mq-range(1600px, 1919px) {
+		margin-left: 10%;
+	}
+	@include mq-range(2200px, 2560px) {
 		font-size: 66px;
 	}
 	@include mq-range(1600px, 2199px) {
@@ -365,18 +387,34 @@
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
-	width: calc(33.333% - 30px);
 	height: 360px;
 	padding: 30px;
 	box-sizing: border-box;
 	background-color: $white;
 	box-shadow: 2px 4px 30px 0 rgba(51, 51, 51, 0.3);
 
-	@include mq-range(2200px, 2560px) {
+	@include mq-range(1920px, 2560px) {
 		height: 520px;
+		&:first-of-type {
+			margin-left: 10%;
+		}
+		&:last-of-type {
+			margin-right: 10%;
+		}
+	}
+	@include mq-range(1600px, 1919px) {
+		&:first-of-type {
+			margin-left: 10%;
+		}
+		&:last-of-type {
+			margin-right: 10%;
+		}
 	}
 	@include mq-range(1440px, 2199px) {
 		height: 420px;
+	}
+	@include mq-range(1248px, 1599px) {
+		margin-right: 80px;
 	}
 	@include mq-range(1024px, 1247px) {
 		width: 60vw;
@@ -400,7 +438,7 @@
 		background: linear-gradient(173deg, #ffffff 35%, transparent 50%);
 		filter: blur(10px);
 	}
-	
+
 	&:not(:last-of-type) {
 		margin-right: 30px;
 	}

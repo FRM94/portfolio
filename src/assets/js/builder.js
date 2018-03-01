@@ -1,20 +1,17 @@
 'use strict';
 
-const create = require('dom-create-element');
-
-import * as base from './base.js';
 import * as transition from './transitions.js';
 import { DATA as data } from '../data/data';
 
+const CREATE = require('dom-create-element');
 let category = document.getElementsByClassName('section');
 
-function loadPage() {
+(function loadPage() {
 	loadPreview();
 	loadMain();
 	loadProjects();
 	loadProjectHighlight();
-}
-loadPage();
+})();
 
 function loadPreview() {
 
@@ -28,7 +25,7 @@ function loadPreview() {
 		// Add category titles
 		{
 			if (data[i].hasOwnProperty('name')) {
-				let title = create({
+				let title = CREATE({
 					selector: 'h2',
 					styles: 'section__title',
 					html: data[i].name
@@ -39,7 +36,7 @@ function loadPreview() {
 
 		// Add a content container
 		{
-			let main = create({
+			let main = CREATE({
 				selector: 'div',
 				styles: 'section__content'
 			});
@@ -48,7 +45,7 @@ function loadPreview() {
 
 		// Add a picture overlay (to all)
 		{
-			let overlay = create({
+			let overlay = CREATE({
 				selector: 'div',
 				styles: 'section__overlay'
 			});
@@ -57,7 +54,7 @@ function loadPreview() {
 
 		// Add a category picture (to all)
 		{
-			let picture = create({
+			let picture = CREATE({
 				selector: 'img',
 				styles: 'section__background',
 				src: '/images/' + data[i].category + '-bg.jpg'
@@ -79,7 +76,7 @@ function loadMain() {
 
 		// Dynamically add a main content container
 		{
-			let container = create({
+			let container = CREATE({
 				selector: 'div',
 				styles: 'section__main'
 			});
@@ -92,7 +89,7 @@ function loadMain() {
 		// Add a category title
 		{
 			if (data[i].hasOwnProperty('name')) {
-				let title = create({
+				let title = CREATE({
 					selector: 'h3',
 					styles: 'content__title',
 					html: data[i].name
@@ -103,7 +100,7 @@ function loadMain() {
 
 		// Add a close icon
 		{
-			let close = create({
+			let close = CREATE({
 				selector: 'span',
 				styles: 'content__close',
 				html: ' '
@@ -122,12 +119,12 @@ function loadMain() {
 		let tags = data[i].tags;
 		{
 			if (tags) {
-				let list = create({
+				let list = CREATE({
 					selector: 'ul',
 					styles: 'content__tags'
 				});
 				for (let x = 0; x < tags.length; x++) {
-					let item = create({
+					let item = CREATE({
 						selector: 'li',
 						styles: 'tag',
 						html: tags[x]
@@ -143,7 +140,7 @@ function loadMain() {
 			if (data[i].description) {
 				let items = data[i].description.length;
 				for (let b = 0; b < items; b++) {
-					let description = create({
+					let description = CREATE({
 						selector: 'p',
 						styles: 'content__description',
 						html: data[i].description[b]
@@ -168,7 +165,7 @@ function loadProjects() {
 
 			// Add a section for all projects
 			{
-				let container = create({
+				let container = CREATE({
 					selector: 'div',
 					styles: 'section__projects'
 				});
@@ -180,7 +177,7 @@ function loadProjects() {
 
 			// Add a projects container
 			{
-				let container = create({
+				let container = CREATE({
 					selector: 'div',
 					styles: 'project__highlight'
 				});
@@ -192,7 +189,7 @@ function loadProjects() {
 
 			// Dynamically add a category title
 			if (data[i].hasOwnProperty('name')) {
-				let title = create({
+				let title = CREATE({
 					selector: 'h3',
 					styles: 'projects__title',
 					html: data[i].name + ' projects'
@@ -200,7 +197,7 @@ function loadProjects() {
 				target.appendChild(title);
 			}
 
-			let subprojects = create({
+			let subprojects = CREATE({
 				selector: 'div',
 				styles: 'projects__wrapper',
 			});
@@ -214,7 +211,7 @@ function loadProjects() {
 			for (let x = 0; x < projects.length; x++) {
 
 				// Add a project container
-				let container = create({
+				let container = CREATE({
 					selector: 'div',
 					styles: 'section__project',
 					html: data[i].name + ' projects'
@@ -226,7 +223,7 @@ function loadProjects() {
 
 				// Add a project title
 				{
-					let title = create({
+					let title = CREATE({
 						selector: 'h3',
 						styles: 'project__title',
 						html: projectName
@@ -237,7 +234,7 @@ function loadProjects() {
 				// Add a project picture (to all)
 				{
 					projectName = projectName.replace(/\s+/g, '-').toLowerCase();
-					let picture = create({
+					let picture = CREATE({
 						selector: 'img',
 						styles: 'project__image',
 						src: '/images/projects/' + projectName + '/' + 'preview.jpg'
@@ -272,7 +269,7 @@ function loadProjectHighlight() {
 
 		// Dynamically add a project title
 		{
-			let title = create({
+			let title = CREATE({
 				selector: 'h2',
 				styles: 'highlight__title'
 			});
@@ -281,7 +278,7 @@ function loadProjectHighlight() {
 
 		// Dynamically add a close icon
 		{
-			let close = create({
+			let close = CREATE({
 				selector: 'span',
 				styles: 'highlight__close',
 				html: ' '
@@ -295,7 +292,7 @@ function loadProjectHighlight() {
 
 		// Dynamically add a project intro
 		{
-			let intro = create({
+			let intro = CREATE({
 				selector: 'p',
 				styles: 'highlight__intro'
 			});
@@ -304,7 +301,7 @@ function loadProjectHighlight() {
 
 		// Dynamically add a category picture (to all)
 		{
-			let picture = create({
+			let picture = CREATE({
 				selector: 'img',
 				styles: 'highlight__background',
 				src: '/images/highlight-bg.jpg'

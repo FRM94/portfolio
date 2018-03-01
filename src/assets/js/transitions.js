@@ -1,21 +1,21 @@
 'use strict';
 
-const create = require('dom-create-element');
-
 import { DATA as data } from '../data/data';
+
+const create = require('dom-create-element');
 
 export function openProject(project, information) {
 	// Set the project target element
-	const root = project.parentElement.parentElement.parentElement.querySelector('.project__highlight');
+	const ROOT = project.parentElement.parentElement.parentElement.querySelector('.project__highlight');
 	// Set the project title
-	setProjectTitle(root, information);
+	setProjectTitle(ROOT, information);
 	// Set the project introduction text
-	setProjectIntro(root, information);
+	setProjectIntro(ROOT, information);
 	// Set sub sections for every description (pic left and right)
-	insertProjectSub(root, information);
+	insertProjectSub(ROOT, information);
 	// Show the highlights block
-	root.parentElement.classList.add('highlight');
-	root.classList.add('active');
+	ROOT.parentElement.classList.add('highlight');
+	ROOT.classList.add('active');
 }
 
 // Reset the scroll position within an element

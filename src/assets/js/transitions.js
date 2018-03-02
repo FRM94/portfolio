@@ -63,7 +63,7 @@ function insertProjectSub(target, information) {
 		});
 		let projectName = information.title.replace(/\s+/g, '-').toLowerCase();
 		let projectSub = information.sub[i].subtitle.replace(/\s+/g, '-').toLowerCase();
-		let imageSrc = '/images/projects/' + projectName + '/' + projectSub + '.jpg';
+		let imageSrc = './images/projects/' + projectName + '/' + projectSub + '.jpg';
 		insertSubImage(imageWrapper, imageSrc);
 		subContainer.appendChild(imageWrapper);
 	}
@@ -94,7 +94,7 @@ function insertSubImage(target, imageSrc) {
 		src: imageSrc
 	});
 	image.onerror = function () {
-		image.src = '/images/placeholder.jpg';
+		image.src = './images/placeholder.jpg';
 	}
 	target.appendChild(image);
 }

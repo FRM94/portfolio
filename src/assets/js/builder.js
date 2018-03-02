@@ -57,10 +57,10 @@ function loadPreview() {
 			let picture = CREATE({
 				selector: 'img',
 				styles: 'section__background',
-				src: '/images/' + data[i].category + '-bg.jpg'
+				src: './images/' + data[i].category + '-bg.jpg'
 			});
 			picture.onerror = function () {
-				picture.src = '/images/placeholder.jpg';
+				picture.src = './images/placeholder.jpg';
 			}
 			target.appendChild(picture);
 		}
@@ -237,10 +237,10 @@ function loadProjects() {
 					let picture = CREATE({
 						selector: 'img',
 						styles: 'project__image',
-						src: '/images/projects/' + projectName + '/' + 'preview.jpg'
+						src: './images/projects/' + projectName + '/' + 'preview.jpg'
 					});
 					picture.onerror = function () {
-						picture.src = '/images/placeholder.jpg';
+						picture.src = './images/placeholder.jpg';
 					}
 					container.appendChild(picture);
 				}
@@ -304,10 +304,10 @@ function loadProjectHighlight() {
 			let picture = CREATE({
 				selector: 'img',
 				styles: 'highlight__background',
-				src: '/images/highlight-bg.jpg'
+				src: './images/highlight-bg.jpg'
 			});
 			picture.onerror = function () {
-				picture.src = '/images/placeholder.jpg';
+				picture.src = './images/placeholder.jpg';
 			}
 			target.appendChild(picture);
 		}

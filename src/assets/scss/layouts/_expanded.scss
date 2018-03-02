@@ -300,12 +300,11 @@
 	}
 
 	@include mq-range(1024px, 1247px) {
-		@include position(null, 84px, 80px, null, null);
 		width: 4.5vw;
 		height: 4.5vw;
 	}
 	@include mq-range(480px, 1023px) {
-		top: 88px !important;
+		//top: 88px !important;
 		width: 48px;
 		height: 48px;
 	}

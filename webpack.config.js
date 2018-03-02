@@ -73,7 +73,7 @@ module.exports = {
 	},
 	plugins: [
 		new HTML_WEBPACK_PLUGIN({
-			title: 'Portfolio',
+			title: 'Portfolio of Fabian Mercey',
 			minify: {
 				collapseWhitespace: true
 			},

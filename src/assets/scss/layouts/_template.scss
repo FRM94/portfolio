@@ -62,7 +62,16 @@ p {
 		}
 		
 		&__content {
-			padding: 120px 10% !important;
+			@include mq-range(0px, 599px) {
+				padding: 50px 10% !important;
+			}
+			@include mq-range(600px, 1599px) {
+				padding: 80px 10% !important;
+			}
+			@include mq-range(1600px, 2560px) {
+				padding: 120px 10% !important;
+			}
+			
 		}
 	}
 }

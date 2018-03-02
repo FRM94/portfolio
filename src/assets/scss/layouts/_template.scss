@@ -105,96 +105,96 @@ p {
 		opacity: 0.4;
 		background: radial-gradient(at bottom left, $grey-light -20%,transparent 85%);
 	}
+}
 
-	&__title,
-	&__content {
-		z-index: 2;
+.section__title,
+.section__content {
+	z-index: 2;
+}
+
+.section__title {
+	@include position(absolute, null, null, 0, 5vw);
+	line-height: 0;
+	color: $white;
+	white-space: nowrap;
+	font-size: 7vh;
+	font-weight: 400;
+	text-transform: uppercase;
+	transform-origin: left bottom;
+	transform: rotate(-90deg);
+	transition: ease 0.3s;
+
+	@include mq-range(768px, 1023px) {
+		@include position(null, null, null, null, 8vw);
+		font-size: 6.5vh;
 	}
-
-	&__title {
-		@include position(absolute, null, null, 0, 5vw);
-		line-height: 0;
-		color: $white;
-		white-space: nowrap;
-		font-size: 7vh;
-		font-weight: 400;
-		text-transform: uppercase;
-		transform-origin: left bottom;
-		transform: rotate(-90deg);
-		transition: ease 0.3s;
-
-		@include mq-range(768px, 1023px) {
-			@include position(null, null, null, null, 8vw);
-			font-size: 6.5vh;
-		}
-		@include mq-range(480px, 767px) {
-			@include position(null, null, null, null, 12vw);
-		}
-		@include mq('phone-wide', max) {
-			@include position(null, null, null, null, 17.5vw);
-			font-size: 6.5vh;
-		}
+	@include mq-range(480px, 767px) {
+		@include position(null, null, null, null, 12vw);
 	}
-
-	&__content {
-		position: relative;
-		opacity: 0;
-		transition: ease 0.5s;
-
-		@include mq-range(1920px, 2560px) {
-			padding: 120px 16vw 120px 0 !important;
-		}
-		@include mq-range(1248px, 1919px) {
-			padding: 80px 16vw 80px 0 !important;
-		}
-		@include mq-range(1024px, 1247px) {
-			padding: 0 16vw 0 0 !important;
-		}
-		@include mq('tablet-wide', max) {
-			padding: 60px 40px;
-		}
+	@include mq('phone-wide', max) {
+		@include position(null, null, null, null, 17.5vw);
+		font-size: 6.5vh;
 	}
+}
 
-	&__overlay, 
-	&__background {
-		@include position(absolute, 0, 0, 0, 0);
-		width: 100%;
-		height: 100%;
-	}
+.section__content {
+	position: relative;
+	opacity: 0;
+	transition: ease 0.5s;
 
-	&__overlay {
-		z-index: 1;
-		opacity: 0.75;
-		pointer-events: none;
-		transition: ease 0.5s;
+	@include mq-range(1920px, 2560px) {
+		padding: 120px 16vw 120px 0 !important;
 	}
+	@include mq-range(1248px, 1919px) {
+		padding: 80px 16vw 80px 0 !important;
+	}
+	@include mq-range(1024px, 1247px) {
+		padding: 0 16vw 0 0 !important;
+	}
+	@include mq('tablet-wide', max) {
+		padding: 60px 40px;
+	}
+}
 
-	&__background {
-		object-fit: cover;
-	}
+.section__overlay, 
+.section__background {
+	@include position(absolute, 0, 0, 0, 0);
+	width: 100%;
+	height: 100%;
+}
+
+.section__overlay {
+	z-index: 1;
+	opacity: 0.75;
+	pointer-events: none;
+	transition: ease 0.5s;
+}
+
+.section__background {
+	object-fit: cover;
+}
 	
-	&.design {
-		z-index: 3;
+.section.design {
+	z-index: 3;
 
-		.section__overlay {
-			background: linear-gradient($red, $purple);
-		}
+	.section__overlay {
+		background: linear-gradient($red, $purple);
 	}
-	&.development {
-		z-index: 2;
+}
+.section.development {
+	z-index: 2;
 
-		.section__overlay {
-			background: linear-gradient($blue-light, $blue);
-		}
+	.section__overlay {
+		background: linear-gradient($blue-light, $blue);
 	}
-	&.about {
-		.section__overlay {
-			background: linear-gradient($black, $white);
-		}
+}
+.section.about {
+	.section__overlay {
+		background: linear-gradient($black, $white);
 	}
-	&.photography {
-		.section__overlay {
-			background: linear-gradient($black, $white);
-		}
+}
+.section.photography {
+	.section__overlay {
+		background: linear-gradient($black, $white);
 	}
 }

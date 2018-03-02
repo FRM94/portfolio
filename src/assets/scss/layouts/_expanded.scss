@@ -10,13 +10,21 @@
 	}
 }
 
+.container:not(.no-direct) {
+	.section__main {
+		@include mq-range(1920px, 2560px) {
+			padding: 0 10%;
+		}
+	}
+}
+.container.no-direct {
+	.section__main {
+		padding: 0;
+	}
+}
+
 .container.active {
 	&:not(.no-direct) {
-		.section__main {
-			@include mq-range(1920px, 2560px) {
-				padding: 0 10%;
-			}
-		}
 		.development {
 			box-shadow: -5px 0 80px rgba(0,0,0,0.25);
 		}
@@ -47,17 +55,6 @@
 					padding: 0;
 				}
 			}
-			.section__main {
-				@include mq-range(1600px, 1919px) {
-					margin: 80px 10%;
-				}
-				@include mq-range(480px, 1247px) {
-					padding: 80px 80px 40px 80px;
-				}
-				@include mq('phablet', max) {
-					padding: 30px;
-				}
-			}
 			.projects__wrapper {
 				@include mq-range(480px, 1247px) {
 					padding: 0 80px 80px 80px;
@@ -78,8 +75,8 @@
 			}
 			.content__close {
 				@include mq('phablet', max) {
-					top: 25px;
-					right: 25px;
+					top: 40px;
+					right: 40px;
 				}
 			}
 			&:nth-of-type(2) {
@@ -128,7 +125,7 @@
 				}
 			}
 			@include mq-range(480px, 1023px) {
-				@include position(null, 78px, 60px, null, null);
+				@include position(null, 102px, 60px, null, null);
 			}
 		}
 		.highlight__close {
@@ -231,6 +228,16 @@
 
 .section__main {
 	position: relative;
+
+	@include mq-range(1600px, 1919px) {
+		margin: 80px 10%;
+	}
+	@include mq-range(480px, 1247px) {
+		padding: 80px 80px 40px 80px;
+	}
+	@include mq('phablet', max) {
+		padding: 50px 10%;
+	}
 }
 
 .content__title,
@@ -270,6 +277,9 @@
 		font-size: 60px;
 		padding-right: 100px;
 	}
+	@include mq-range(0px, 479px) {
+		font-size: 48px;
+	}
 	@include mq('phablet', max) {
 		margin-top: 40px;
 	}
@@ -277,7 +287,7 @@
 
 .content__close,
 .highlight__close {
-	@include position(absolute, 25px, 0, null, null);
+	@include position(absolute, 21px, 0, null, null);
 	width: 100%;
 	width: 3.5vw;
 	height: 3.5vw;
@@ -340,7 +350,11 @@
 		@include mq-range(1920px, 2560px) {
 			font-size: 28px;
 		}
-		@include mq('tablet-wide', max) {
+		@include mq-range(0px, 479px) {
+			margin-bottom: 10px;
+			font-size: 16px;
+		}
+		@include mq-range(480px, 1024px) {
 			margin-bottom: 10px;
 			font-size: 18px;
 		}

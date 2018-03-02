@@ -3,8 +3,8 @@
 import * as transition from './transitions.js';
 import { DATA as data } from '../data/data';
 
-const CREATE = require('dom-create-element');
-let category = document.getElementsByClassName('section');
+const CREATE = require( 'dom-create-element' );
+let category = document.getElementsByClassName( 'section' );
 
 (function loadPage() {
 	loadPreview();
@@ -15,22 +15,22 @@ let category = document.getElementsByClassName('section');
 
 function loadPreview() {
 
-	// For each section:
-	for (let i = 0; i < category.length; i++) {
+	// For each section
+	for ( let i = 0; i < category.length; i++ ) {
 
 		// Add category classes
-		let target = category[i];
-		target.className = 'section ' + data[i].category;
+		let target = category[ i ];
+		target.className = 'section ' + data[ i ].category;
 
 		// Add category titles
 		{
-			if (data[i].hasOwnProperty('name')) {
+			if (data[ i ].hasOwnProperty( 'name' )) {
 				let title = CREATE({
 					selector: 'h2',
 					styles: 'section__title',
-					html: data[i].name
+					html: data[ i ].name
 				});
-				target.appendChild(title);
+				target.appendChild( title );
 			}
 		}
 
@@ -68,7 +68,8 @@ function loadPreview() {
 }
 
 function loadMain() {
-	// For each section: 
+	// For each section:
+	
 	for (let i = 0; i < category.length; i++) {
 
 		// Set target element

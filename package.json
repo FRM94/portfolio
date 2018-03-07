@@ -30,7 +30,8 @@
 		"dev": "webpack-dev-server",
 		"host": "webpack-dev-server --host 0.0.0.0 --port 8080",
 		"prod": "webpack -p",
-		"server": "webpack -p && git add . && git commit -m 'Live update' && git subtree push --prefix dist origin gh-pages"
+		"server": "webpack -p && git add . && git commit -m 'Live update' && git subtree push --prefix dist origin gh-pages",
+		"push": "webpack -p && git add . && git commit -m 'Live update' && subtree split --prefix dist -b gh-pages && git push -f origin gh-pages:gh-page && git branch -D gh-pages"
 	},
 	"repository": {
 		"type": "git",

@@ -45,7 +45,7 @@ export const DATA = [
 				]
 			},
 			{
-				"title": "Flood Risk Analysis",
+				"title": "Flood Risk Analysis ",
 				"intro": "I created the design for a flood risk analysis tool for Royal HaskoningDHV based on the design system that I developed there.",
 				"sub": [
 					{

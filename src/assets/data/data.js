@@ -1,18 +1,82 @@
 export const DATA = [
 	{
 		"category": "design",
-		"name": "UX / Design",
+		"name": "UX/UI Design",
 		"tags": [
-			"Adobe Photoshop CC",
-			"Adobe Illustrator CC",
 			"Sketch",
+			"Photoshop CC",
+			"Illustrator CC",
 			"myBalsamiq"
 		],
 		"description": [
 			"As a designer, I endeavour to build a bridge from the user to the system - and vice versa.",
-			"I achieve this is by listening carefully to every stakeholder, in order to create a product that fulfils everyone's needs. When designing an interface, I focus on the user's perspective, whilst preserving the goals of the client, to translate every input into a user friendly product. Naturally, everything is done using the latest design programs."
+			"I achieve this is by listening carefully to every stakeholder, in order to create a product that fulfils everyone's needs. When designing an interface, I focus on the user's perspective, whilst preserving the goals of the client, to translate every input into a user friendly product. Naturally, everything is user tested."
 		],
 		"projects": [
+			{
+				"title": "Technical Due Diligence",
+				"intro": "Technical Due Diligence (TDD) was an iPad focused project designed by me for Royal HaskoningDHV and is based on the design system that I developed there.",
+				"sub": [
+					{
+						"subtitle": "Inspect on the go",
+						"descriptions": [
+							"In order to help consultants carry out inspections on site, we developed an iPad app.",
+							"The app allows them to fill in categorised and standardised questions, make pictures and fill in information about buildings which are then included in an automatically generated report.",
+						]
+					},
+					{
+						"subtitle": "Everything is recorded",
+						"descriptions": [
+							"It's vital for consultants to make notes, pictures, add red flags and enter CAPEX values for each topic and element. These options are the core of the product and to make the inspections quick and reliable, they are available at all times."
+						]
+					}
+				]
+			},
+			{
+				"title": "SDS Converter",
+				"intro": "In the age of technology, tons of SDS (PDF) files are still not digitalised. I created the design for an application that converts these files to digital references.",
+				"sub": [
+					{
+						"subtitle": "Digitalise your PDFs",
+						"descriptions": [
+							"The tool allows the user to upload (a set of) PDF files and performs the conversion on the fly. Since the conversion takes about two minutes (SDS files count 70 pages on average), we had to inform the user about the remaining time and clearly show them the end result."
+						]
+					}
+				]
+			},
+			{
+				"title": "Flood Risk Analysis",
+				"intro": "I created the design for a flood risk analysis tool for Royal HaskoningDHV based on the design system that I developed there.",
+				"sub": [
+					{
+						"subtitle": "Flow",
+						"descriptions": [
+							"When creating a flood analysis project, the user has to follow certain steps. Each step features a clear layout with a set of options that takes the user through the whole process.",
+							"The goal is to upload existing data, which can be analysed and used for calculations on the server. A project can already be viewed before all the data has been uploaded.",
+						]
+					},
+					{
+						"subtitle": "Calculation results",
+						"descriptions": [
+							"The project view offers an overview of inundation maps. This shows which areas are the most vulnerable to flood risks by displaying the water depth in case of an emergency.",
+							"Once all the files have been uploaded, the server calculates which areas of the map will be damaged the most, which is shown in euro/square metre."
+						]
+					}
+				]
+			},
+			{
+				"title": "Maritime & Aviation Database",
+				"intro": "Digitalising data is key, especially if there's lots of it. I created the design for a maritime and aviation database for Royal HaskoningDHV based on the design system that I developed there.",
+				"sub": [
+					{
+						"subtitle": "Find all the data",
+						"descriptions": [
+							"Ports, projects, containers, terminals, economics... everything has to be there and easily accessible, both in data tables and on a map.",
+							"Filters and the map allow the user to easily find all sorts of data and use this to select whatever they want to export."
+						]
+					}
+				]
+			},
 			{
 				"title": "BeCon Summit",
 				"intro": "I was asked to create a demo concept of an invitation to a medical meeting.",
@@ -29,7 +93,7 @@ export const DATA = [
 			},
 			{
 				"title": "Gamification",
-				"intro": "The MBO Rijnland, a school organisation South-Holland wanted to create system based on gamification, in order to attract students to learning.",
+				"intro": "MBO Rijnland, a school organisation South-Holland wanted to create system based on gamification, in order to attract students to learning.",
 				"sub": [
 					{
 						"subtitle": "About the project",

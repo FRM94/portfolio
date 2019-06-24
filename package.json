@@ -35,12 +35,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/FRM94/portfolio.git"
+		"url": "git+https://github.com/fabianmercey/portfolio.git"
 	},
 	"author": "Fabian Mercey",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/FRM94/portfolio/issues"
+		"url": "https://github.com/fabianmercey/portfolio/issues"
 	},
-	"homepage": "https://github.com/FRM94/portfolio#readme"
+	"homepage": "https://github.com/fabianmercey/portfolio#readme"
 }

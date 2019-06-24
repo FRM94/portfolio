@@ -27,7 +27,7 @@ export const DATA = [
 					{
 						"subtitle": "Everything is recorded",
 						"descriptions": [
-							"It's vital for consultants to make notes, pictures, add red flags and enter CAPEX values for each topic and element. These options are the core of the product and to make the inspections quick and reliable, they are available at all times. "
+							"It's vital for consultants to make notes, pictures, add red flags and enter CAPEX values for each topic and element. These options are the core of the product and to make the inspections quick and reliable, they are available at all times."
 						]
 					}
 				]
